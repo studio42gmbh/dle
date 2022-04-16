@@ -18,30 +18,41 @@ Benjamin
 > "Look up to the stars not down on your feet. Be curious!" _Stephen Hawking 1942 - 2018_
 
 
+## Get started
+
+* Download project
+* Download Base 42 https://github.com/studio42gmbh/base42
+* Download Log 42 https://github.com/studio42gmbh/log42
+* Download DL https://github.com/studio42gmbh/dl
+* Explore examples
+
+Find the Javadoc here: https://studio42gmbh.github.io/dle/javadoc/
+
+
 ## Simple Configuration Example
 
 Shows using DL for your configuration.
 
-https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/simpleconfiguration
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/simpleconfiguration
 
 
 ## Load And Store Example
 
 Shows using DL for loading and storing your complex configuration.
 
-https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/loadandstore
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/loadandstore
 
 
 ## Binary Example
 
 Shows you how to write and read DL in different default formats - especially BIN and BIN_COMPRESSED.
 
-https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/binary
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/binary
 
 
 ## GUI Example
 
 Shows creating a very simple data driven GUI framework with DL.
 
-https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/gui
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/gui
 
