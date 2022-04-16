@@ -22,18 +22,26 @@ Benjamin
 
 Shows using DL for your configuration.
 
+https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/simpleconfiguration
+
 
 ## Load And Store Example
 
 Shows using DL for loading and storing your complex configuration.
+
+https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/loadandstore
 
 
 ## Binary Example
 
 Shows you how to write and read DL in different default formats - especially BIN and BIN_COMPRESSED.
 
+https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/binary
+
 
 ## GUI Example
 
 Shows creating a very simple data driven GUI framework with DL.
+
+https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/gui
 
