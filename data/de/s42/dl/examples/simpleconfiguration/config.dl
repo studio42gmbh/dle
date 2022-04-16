@@ -1,0 +1,12 @@
+/*
+ * A simple configuration mapped onto a java class in app
+ */
+
+Configuration {
+
+	login	: "Arthur Smith"; 
+	id		: 1456745655;
+	depth	: 1.5629345793985692;
+	active	: true;
+	uuid	: "ad232384-4a04-4119-9e95-4753f31e3b09";
+}

@@ -1,0 +1,33 @@
+/*
+ * Test main view
+ */
+
+// shows loading a custom action
+require "de/s42/dl/examples/gui/actions/CloseAction.dlt";
+
+Button close {
+	bounds : 10, 10, 100, 50;
+	text : $i18n.mainCloseText;
+	action : CloseAction {};
+}
+
+Label info {
+	bounds : 10, 70, 100, 20;
+	text : $i18n.mainInfoText;
+}
+
+Panel panel {
+
+	bounds : 150, 100, 300, 200;
+
+	Label {
+		bounds : 10, 10, 100, 20;
+		text : $i18n.mainPanelLabelText;
+	}
+
+	Button {
+		bounds : 120, 10, 100, 50;
+		text : $i18n.mainDebugText;
+		action : DebugAction {};
+	}
+}

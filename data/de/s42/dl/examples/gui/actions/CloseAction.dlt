@@ -1,0 +1,9 @@
+/**
+ * this is a virtual dl only defaulting type
+ */
+final type de.s42.dl.examples.gui.actions.CloseAction @java extends javax.swing.AbstractAction 
+{
+	GuiWindow window : $window;
+}
+
+alias CloseAction de.s42.dl.examples.gui.actions.CloseAction;

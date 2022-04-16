@@ -1,0 +1,7 @@
+module:de.sft.dlexamples
+de.s42.dl.examples.binary
+de.s42.dl.examples.gui
+de.s42.dl.examples.gui.actions
+de.s42.dl.examples.gui.components
+de.s42.dl.examples.loadandstore
+de.s42.dl.examples.simpleconfiguration
