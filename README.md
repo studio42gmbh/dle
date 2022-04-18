@@ -56,3 +56,19 @@ Shows creating a very simple data driven GUI framework with DL.
 
 See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/gui
 
+
+## DL Only Example
+
+Showcases the possibilites of DL only usage. 
+
+* Require other modules
+* Define extern types, annotations, pragmas
+* Define complex types with extends und contains
+* Use pragmas
+* Define instances
+* Reference instances
+* Export instances
+* Introspect DL within Java
+
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/dlonly
+
