@@ -34,8 +34,9 @@ import de.s42.log.Logger;
 import java.nio.file.Path;
 
 /**
- * This example shows how to use dl to create a domain model connected as DL dialect and an API within Java. 
- * It also shows how to inject values into dl as referencable data.
+ * This example shows how to use dl to create a domain model connected as DL dialect and an API within Java. It also
+ * shows how to inject values into dl as referencable data.
+ *
  * @author Benjamin Schiller
  */
 public class Main
@@ -52,17 +53,19 @@ public class Main
 
 		// Create the dl core
 		HtmlCore core = HtmlCore.create();
-		
+
 		// Inject a variable into core -> can now be referenced with $title within DL
 		core.setVariable("title", "Page Title from Java");
-		
-		// Read dl file into domain data model
+
+		// Read DL file into domain data model
 		HtmlTag html = core.parseHtml(HTML_DL_FILE);
-		
-		// Find body tag and then append a p tag to it
-		html
-			.getChild(BodyTag.class).orElseThrow()
-			.addChild(new PTag("Added this text in Java!"));
+
+		// Find body tag and then append a p tag to it or error if not found
+		html.getChild(BodyTag.class).ifPresentOrElse((tag) -> {
+			tag.addChild(new PTag("Added this text in Java!"));
+		}, () -> {
+			log.error("No body tag found");
+		});
 
 		// Create and store the domain model as html file
 		FilesHelper.writeStringToFile(HTML_FILE, html.toHtml());
