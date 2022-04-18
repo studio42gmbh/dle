@@ -77,22 +77,33 @@ See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/exam
 
 Showcases creating a html file from a dl dialect.
 
+From
 ```
 html {
-	body {
-		div main {
-			classes : alert, alert-info;
-
-			div {
-				classes : jumbotron;
-
-				h1 heading { text : "The Heading"; }
-
-				p headingText {	text : "The multiline\ntext under the heading";	}
-			}
-		}
-	}
+  body {
+    div main {
+      classes : alert, alert-info;
+      div {
+        classes : jumbotron;
+        h1 heading { text : "The Heading"; }
+        p headingText { text : "The multiline\ntext under the heading";	}
+      }
+    }
+  }
 }
+```
+To
+```
+<html>
+  <body>
+    <div id="main" class="alert, alert-info">
+      <div class="jumbotron">
+        <h1 id="heading">The Heading</h1>
+        <p id="headingText">The multiline<br/>text under the heading</p>
+      </div>
+     </div>
+  </body>
+</html>
 ```
 
 See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/html
