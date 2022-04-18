@@ -26,7 +26,6 @@
 package de.s42.dl.examples.gui;
 
 import de.s42.dl.DLType;
-import de.s42.dl.core.CoreDLInstance;
 import de.s42.dl.examples.gui.components.GuiWindow;
 import de.s42.dl.core.DefaultCore;
 import de.s42.dl.examples.gui.actions.DebugAction;
@@ -38,7 +37,6 @@ import de.s42.dl.examples.gui.components.TextComponent;
 import de.s42.dl.examples.gui.components.View;
 import de.s42.dl.exceptions.DLException;
 import de.s42.dl.instances.SimpleTypeDLInstance;
-import de.s42.dl.types.CoreDLType;
 import de.s42.dl.types.DefaultDLType;
 import de.s42.dl.util.DLHelper;
 import de.s42.dl.util.DLHelper.DLFileType;
@@ -73,8 +71,6 @@ public class GuiCore extends DefaultCore
 		assert window != null;
 
 		// core types
-		CoreDLType coreType = (CoreDLType) getType(CoreDLType.DEFAULT_SYMBOL).get();
-		addExported(new CoreDLInstance(this, coreType));
 		defineType(new RectangleDLType());
 		defineType(createType(List.class));
 		//defineTypeFromClass(Object[].class);

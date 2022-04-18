@@ -1,0 +1,15 @@
+html {
+	body {
+		div main {
+			classes : alert, alert-info;
+
+			div {
+				classes : jumbotron;
+
+				h1 heading { text : "The Heading"; }
+
+				p headingText {	text : "The multiline\ntext under the heading";	}
+			}
+		}
+	}
+}
