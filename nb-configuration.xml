@@ -41,6 +41,7 @@ Any value defined here will override the pom.xml file value but is only applicab
             <configuration id="GUI Example" profiles=""/>
             <configuration id="Load and Store Example" profiles=""/>
             <configuration id="Simple Example" profiles=""/>
+            <configuration id="DL Only Example" profiles=""/>
         </configurations>
     </config-data>
 </project-shared-configuration>

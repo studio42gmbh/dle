@@ -1,0 +1,43 @@
+// define types
+
+require "de/s42/dl/examples/dlonly/types.dl";
+
+
+// define data
+
+Achievement dailySmasher {
+	hrid : DailySmasher;
+	id : "16e6b093-59bc-4f6c-9560-bd5789adda0f";
+}
+
+Achievement hundredLogins {
+	hrid : HundredLogins;
+	id : "a9768614-00cd-4341-82c9-193883423abc";
+}
+
+Config config @export {
+	debug : true;
+
+	User arthur {
+		login : "Arthur";
+	}
+
+	User thomas {
+		login : "Thomas";
+		status : VIP;
+		achievements : $hundredLogins;
+	}
+
+	User ben {
+		login : "Ben";
+		status : Member;
+		customValue : "Only set for Ben";
+		achievements : $dailySmasher, $hundredLogins;
+
+		Media {
+			display : "Module File";
+			path : "de/s42/dl/examples/dlonly/module.dl";
+			tags : dl, favorites, ascii;
+		}
+	}
+}

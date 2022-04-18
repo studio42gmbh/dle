@@ -1,0 +1,65 @@
+// define enums and types
+
+extern type de.s42.dl.types.ObjectDLType; 
+extern type de.s42.dl.types.SymbolDLType; 
+extern type de.s42.dl.types.StringDLType;
+extern type de.s42.dl.types.UUIDDLType;
+extern type de.s42.dl.types.PathDLType;
+extern type de.s42.dl.types.BooleanDLType;
+alias boolean de.s42.dl.types.BooleanDLType;
+extern type de.s42.dl.types.ArrayDLType;
+
+extern annotation de.s42.dl.annotations.DynamicDLAnnotation;
+extern annotation de.s42.dl.annotations.RequiredDLAnnotation;
+extern annotation de.s42.dl.annotations.LengthDLAnnotation;
+extern annotation de.s42.dl.annotations.UniqueDLAnnotation;
+extern annotation de.s42.dl.annotations.GenerateUUIDDLAnnotation;
+extern annotation de.s42.dl.annotations.ContainDLAnnotation;
+extern annotation de.s42.dl.annotations.IsFileDLAnnotation;
+extern annotation de.s42.dl.annotations.ExportDLAnnotation;
+
+pragma definePragma(de.s42.dl.pragmas.DisableDefineAnnotationsPragma);
+pragma definePragma(de.s42.dl.pragmas.DisableDefinePragmasPragma);
+pragma definePragma(de.s42.dl.pragmas.DisableDefineTypesPragma);
+pragma definePragma(de.s42.dl.pragmas.DisableRequirePragma);
+
+enum MemberStatus 
+{
+	Guest, Member, Gold, VIP
+}
+
+type Achievement @dynamic extends Object
+{
+	Symbol hrid @required @length(3, 100) @unique;
+	UUID id @generateUUID @required;
+}
+
+type Media @dynamic extends Object
+{
+	String display @required @length(3, 100);
+	Path path @required @isFile;
+	UUID id @generateUUID @required;
+}
+
+type User @dynamic @contain(Media, 0, 100) extends Object contains Media
+{
+	String login @required @length(3, 100) @unique;
+	UUID id @generateUUID @required;
+	boolean active : true;
+	MemberStatus status : Guest;
+	Array<Achievement> achievements;
+}
+
+final type Configuration @contain(User, 1, 3) extends Object contains User 
+{
+	boolean debug : false;
+}
+alias Config Configuration;
+
+
+// disallow definitions and requiring in data section
+
+pragma disableDefineTypes;
+pragma disableDefineAnnotations;
+pragma disableDefinePragmas;
+pragma disableRequire;
