@@ -58,13 +58,13 @@ public class HtmlCore extends DefaultCore
 		defineArrayType(String.class);
 		defineType(createType(Tag.class));
 		defineType(createType(ContainerTag.class));
-
 		defineType(createType(TextTag.class));
-		defineType(createType(BodyTag.class), "BODY", "body");
-		defineType(createType(HtmlTag.class), "HTML", "html");
-		defineType(createType(DivTag.class), "DIV", "div");
-		defineType(createType(PTag.class), "P", "p");
-		defineType(createType(H1Tag.class), "H1", "h1");
+
+		defineType(createType(BodyTag.class), "body");
+		defineType(createType(HtmlTag.class), "html");
+		defineType(createType(DivTag.class), "div");
+		defineType(createType(PTag.class), "p");
+		defineType(createType(H1Tag.class), "h1");
 
 		setAllowDefineAnnotations(false);
 		setAllowDefinePragmas(false);
