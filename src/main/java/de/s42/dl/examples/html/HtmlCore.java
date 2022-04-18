@@ -36,8 +36,11 @@ import de.s42.dl.examples.html.tags.Tag;
 import de.s42.dl.examples.html.tags.PTag;
 import de.s42.dl.examples.html.tags.TextTag;
 import de.s42.dl.exceptions.DLException;
+import de.s42.dl.exceptions.InvalidInstance;
+import de.s42.dl.instances.SimpleTypeDLInstance;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 /**
  *
@@ -48,37 +51,57 @@ public class HtmlCore extends DefaultCore
 
 	public static HtmlCore create() throws IOException, DLException
 	{
-		HtmlCore core = new HtmlCore();
-		core.init();
-		return core;
+		return new HtmlCore();
+	}
+
+	public HtmlCore() throws IOException, DLException
+	{
+		init();
 	}
 
 	private void init() throws IOException, DLException
 	{
 		defineArrayType(String.class);
+		defineType(createType(List.class));
 		defineType(createType(Tag.class));
 		defineType(createType(ContainerTag.class));
 		defineType(createType(TextTag.class));
 
-		defineType(createType(BodyTag.class), "body");
-		defineType(createType(HtmlTag.class), "html");
-		defineType(createType(DivTag.class), "div");
-		defineType(createType(PTag.class), "p");
-		defineType(createType(H1Tag.class), "h1");
+		defineType(createType(BodyTag.class), BodyTag.NAME);
+		defineType(createType(HtmlTag.class), HtmlTag.NAME);
+		defineType(createType(DivTag.class), DivTag.NAME);
+		defineType(createType(PTag.class), PTag.NAME);
+		defineType(createType(H1Tag.class), H1Tag.NAME);
 
 		setAllowDefineAnnotations(false);
 		setAllowDefinePragmas(false);
 		setAllowDefineTypes(false);
 	}
 
-	public String toHTML(Path htmlFile) throws DLException
+	public void setVariable(String key, String value) throws InvalidInstance
+	{
+		assert key != null;
+		assert value != null;
+
+		// Define a simple data instance representing the given variable
+		SimpleTypeDLInstance<String> variable
+			= new SimpleTypeDLInstance<>(
+				value,
+				getType(String.class).orElseThrow(),
+				key);
+
+		// Map it into core -> can now be used with $key as reference in dl
+		addExported(variable);
+	}
+
+	public <TagType extends Tag> TagType parseHtml(Path htmlFile) throws DLException
 	{
 		assert htmlFile != null;
 
+		// Load file as module
 		DLModule module = parse(htmlFile.toAbsolutePath().toString());
 
-		Tag root = (Tag) module.getChild(0).toJavaObject(this);
-
-		return root.toHtml();
+		// Expect the file to contain at least 1 child -> return it
+		return (TagType) module.getChild(0).toJavaObject(this);
 	}
 }

@@ -31,9 +31,16 @@ package de.s42.dl.examples.html.tags;
  */
 public class H1Tag extends TextTag
 {
+
+	public static final String NAME = "h1";
+
 	public H1Tag()
 	{
-		super("h1");
+		super(NAME);
 	}
 
+	public H1Tag(String text)
+	{
+		super(NAME, text);
+	}
 }

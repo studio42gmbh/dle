@@ -39,23 +39,35 @@ public abstract class TextTag extends Tag
 		super(tag);
 	}
 
+	public TextTag(String tag, String text)
+	{
+		super(tag);
+
+		this.text = text;
+	}
+
 	@Override
 	protected boolean hasContent()
 	{
-		return (text != null) && !text.isBlank();
+		String txt = getText();
+		return (txt != null) && !txt.isBlank();
 	}
 
 	@Override
 	protected void toHtmlContent(StringBuilder builder)
 	{
+		assert builder != null;
+
 		builder.append(escapeHtml(getText()));
 	}
-	
+
 	protected String escapeHtml(String text)
 	{
-		// replace new lines
+		assert text != null;
+
+		// Replace new lines with <br/>
 		String result = text.replaceAll("\\n", "<br/>");
-		
+
 		return result;
 	}
 

@@ -26,12 +26,16 @@
 package de.s42.dl.examples.html;
 
 import de.s42.base.files.FilesHelper;
+import de.s42.dl.examples.html.tags.BodyTag;
+import de.s42.dl.examples.html.tags.HtmlTag;
+import de.s42.dl.examples.html.tags.PTag;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
 import java.nio.file.Path;
 
 /**
- *
+ * This example shows how to use dl to create a domain model connected as DL dialect and an API within Java. 
+ * It also shows how to inject values into dl as referencable data.
  * @author Benjamin Schiller
  */
 public class Main
@@ -46,11 +50,22 @@ public class Main
 	{
 		log.info("Starting HTML Example");
 
-		// create the dl core
+		// Create the dl core
 		HtmlCore core = HtmlCore.create();
+		
+		// Inject a variable into core -> can now be referenced with $title within DL
+		core.setVariable("title", "Page Title from Java");
+		
+		// Read dl file into domain data model
+		HtmlTag html = core.parseHtml(HTML_DL_FILE);
+		
+		// Find body tag and then append a p tag to it
+		html
+			.getChild(BodyTag.class).orElseThrow()
+			.addChild(new PTag("Added this text in Java!"));
 
-		// Create and store the dl as html file
-		FilesHelper.writeStringToFile(HTML_FILE, core.toHTML(HTML_DL_FILE));
+		// Create and store the domain model as html file
+		FilesHelper.writeStringToFile(HTML_FILE, html.toHtml());
 
 		log.debug(FilesHelper.createMavenNetbeansFileConsoleLink("Written HTML File", HTML_FILE));
 	}

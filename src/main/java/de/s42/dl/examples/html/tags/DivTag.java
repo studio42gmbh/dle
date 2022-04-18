@@ -32,8 +32,10 @@ package de.s42.dl.examples.html.tags;
 public class DivTag extends ContainerTag
 {
 
+	public static final String NAME = "div";
+
 	public DivTag()
 	{
-		super("div");
+		super(NAME);
 	}
 }

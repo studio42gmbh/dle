@@ -53,17 +53,18 @@ public abstract class Tag
 
 		builder.append("<").append(getTag());
 
-		// add name as id
+		// Add name as id
 		if (getName() != null) {
 			builder.append(" id=\"").append(getName()).append("\"");
 		}
 		
-		// add classes
-		if (classes != null && classes.length > 0) {
+		// Add classes
+		String[] clss = getClasses();
+		if (clss != null && clss.length > 0) {
 			builder.append(" class=\"");
 			
 			boolean first = true;
-			for (String cls : classes) {
+			for (String cls : clss) {
 				if (!first) {
 					builder.append(", ");
 				}

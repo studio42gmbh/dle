@@ -32,12 +32,14 @@ import de.s42.dl.annotations.ContainOnceDLAnnotation;
  *
  * @author Benjamin Schiller
  */
-@AnnotationDL(value = ContainOnceDLAnnotation.DEFAULT_SYMBOL, parameters = { "body" })
+@AnnotationDL(value = ContainOnceDLAnnotation.DEFAULT_SYMBOL, parameters = {BodyTag.NAME})
 public class HtmlTag extends ContainerTag
 {
 
+	public static final String NAME = "html";
+
 	public HtmlTag()
 	{
-		super("html");
+		super(NAME);
 	}
 }

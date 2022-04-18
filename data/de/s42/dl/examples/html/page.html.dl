@@ -6,7 +6,7 @@ html {
 			div {
 				classes : jumbotron;
 
-				h1 heading { text : "The Heading"; }
+				h1 heading { text : $title; }
 
 				p headingText {	text : "The multiline\ntext under the heading";	}
 			}

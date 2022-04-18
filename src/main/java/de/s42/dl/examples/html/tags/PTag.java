@@ -31,8 +31,16 @@ package de.s42.dl.examples.html.tags;
  */
 public class PTag extends TextTag
 {
+
+	public static final String NAME = "p";
+
 	public PTag()
 	{
-		super("p");
-	}	
+		super(NAME);
+	}
+
+	public PTag(String text)
+	{
+		super(NAME, text);
+	}
 }

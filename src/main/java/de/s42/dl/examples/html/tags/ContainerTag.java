@@ -27,7 +27,9 @@ package de.s42.dl.examples.html.tags;
 
 import de.s42.dl.java.DLContainer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -46,9 +48,11 @@ public abstract class ContainerTag extends Tag implements DLContainer<Tag>
 	@Override
 	protected void toHtmlContent(StringBuilder builder)
 	{
+		assert builder != null;
+
 		builder.append("\n");
 
-		for (Tag child : children) {
+		for (Tag child : getChildren()) {
 
 			child.toHtml(builder);
 
@@ -62,11 +66,37 @@ public abstract class ContainerTag extends Tag implements DLContainer<Tag>
 		return !children.isEmpty();
 	}
 
+	public void addChild(Tag child)
+	{
+		assert child != null;
+
+		addChild(child.getName(), child);
+	}
+
 	@Override
 	public void addChild(String name, Tag child)
 	{
 		assert child != null;
 
 		children.add(child);
+	}
+
+	public List<Tag> getChildren()
+	{
+		return Collections.unmodifiableList(children);
+	}
+
+	public <TagType extends Tag> Optional<TagType> getChild(Class<? extends TagType> type)
+	{
+		assert type != null;
+
+		// Find child with given type
+		for (Tag child : getChildren()) {
+			if (type.isAssignableFrom(child.getClass())) {
+				return Optional.of((TagType) child);
+			}
+		}
+
+		return Optional.empty();
 	}
 }

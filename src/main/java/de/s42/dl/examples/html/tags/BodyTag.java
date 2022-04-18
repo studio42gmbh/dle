@@ -32,8 +32,10 @@ package de.s42.dl.examples.html.tags;
 public class BodyTag extends ContainerTag
 {
 
+	public static final String NAME = "body";
+
 	public BodyTag()
 	{
-		super("body");
+		super(NAME);
 	}
 }
