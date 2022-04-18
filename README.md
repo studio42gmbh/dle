@@ -72,3 +72,28 @@ Showcases the possibilites of DL only usage.
 
 See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/dlonly
 
+
+## HTML Example
+
+Showcases creating a html file from a dl dialect.
+
+```
+html {
+	body {
+		div main {
+			classes : alert, alert-info;
+
+			div {
+				classes : jumbotron;
+
+				h1 heading { text : "The Heading"; }
+
+				p headingText {	text : "The multiline\ntext under the heading";	}
+			}
+		}
+	}
+}
+```
+
+See https://github.com/studio42gmbh/dle/tree/master/src/main/java/de/s42/dl/examples/html
+
