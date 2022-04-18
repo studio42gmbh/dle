@@ -17,13 +17,14 @@ extern annotation de.s42.dl.annotations.GenerateUUIDDLAnnotation;
 extern annotation de.s42.dl.annotations.ContainDLAnnotation;
 extern annotation de.s42.dl.annotations.IsFileDLAnnotation;
 extern annotation de.s42.dl.annotations.ExportDLAnnotation;
+extern annotation de.s42.dl.annotations.PreliminaryDLAnnotation;
 
 pragma definePragma(de.s42.dl.pragmas.DisableDefineAnnotationsPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableDefinePragmasPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableDefineTypesPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableRequirePragma);
 
-enum MemberStatus 
+enum MemberStatus @preliminary
 {
 	Guest, Member, Gold, VIP
 }
