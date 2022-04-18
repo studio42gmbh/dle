@@ -8,7 +8,9 @@ require "de/s42/dl/examples/gui/actions/CloseAction.dlt";
 Button close {
 	bounds : 10, 10, 100, 50;
 	text : $i18n.mainCloseText;
-	action : CloseAction {};
+	action : CloseAction {
+		window : $window;
+	};
 }
 
 Label info {

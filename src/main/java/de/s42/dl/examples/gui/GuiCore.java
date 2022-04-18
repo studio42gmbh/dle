@@ -76,19 +76,19 @@ public class GuiCore extends DefaultCore
 		CoreDLType coreType = (CoreDLType) getType(CoreDLType.DEFAULT_SYMBOL).get();
 		addExported(new CoreDLInstance(this, coreType));
 		defineType(new RectangleDLType());
-		defineTypeFromClass(List.class);
+		defineType(createType(List.class));
 		//defineTypeFromClass(Object[].class);
 		//defineTypeFromClass(PropertyChangeListener[].class);
-		defineTypeFromClass(Action.class);
-		defineTypeFromClass(AbstractAction.class);
-		defineTypeFromClass(Component.class);
-		defineTypeFromClass(TextComponent.class);
-		defineTypeFromClass(Button.class, "Button");
-		defineTypeFromClass(Label.class, "Label");
-		defineTypeFromClass(Panel.class, "Panel");
+		defineType(createType(Action.class));
+		defineType(createType(AbstractAction.class));
+		defineType(createType(Component.class));
+		defineType(createType(TextComponent.class));
+		defineType(createType(Button.class), "Button");
+		defineType(createType(Label.class), "Label");
+		defineType(createType(Panel.class), "Panel");
 
 		// allow to access window
-		DLType windowType = defineTypeFromClass(GuiWindow.class, "GuiWindow");
+		DLType windowType = defineType(createType(GuiWindow.class), "GuiWindow");
 		addExported(new SimpleTypeDLInstance<>(window, windowType, "window"));
 
 		// i18n and l10n
@@ -100,7 +100,7 @@ public class GuiCore extends DefaultCore
 		addExported(i18n);
 
 		// implementation types
-		defineTypeFromClass(DebugAction.class, "DebugAction");
+		defineType(createType(DebugAction.class), "DebugAction");
 
 		// print current core types as dl file
 		DLHelper.writeTypesToFile(this, BASE_PATH.resolve(TYPES_PATH), DLFileType.HRF);

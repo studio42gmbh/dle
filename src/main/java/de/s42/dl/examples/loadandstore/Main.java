@@ -52,8 +52,8 @@ public class Main
 		
 		// init core and 2 custom types Uer and Configuration
 		DefaultCore core = new DefaultCore();
-		core.defineTypeFromClass(User.class);
-		core.defineTypeFromClass(Configuration.class);
+		core.defineType(core.createType(User.class));
+		core.defineType(core.createType(Configuration.class));
 
 		// pre create configuration if config has not been saved yet
 		Configuration config;

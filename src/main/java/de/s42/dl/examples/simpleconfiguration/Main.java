@@ -48,7 +48,7 @@ public class Main
 		
 		// setup dl core and map own class Configuration
 		DefaultCore core = new DefaultCore();
-		core.defineTypeFromClass(Configuration.class, "Configuration");
+		core.defineType(core.createType(Configuration.class), "Configuration");
 
 		// load config -> as it is a dl file with just a single entity we can use this helper method
 		Configuration config = core.parse(CONFIG_PATH.toString()).getChildAsJavaObject(0, core);

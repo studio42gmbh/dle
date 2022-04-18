@@ -62,7 +62,7 @@ public class Main
 		
 		// init core and 2 custom types Uer and Configuration
 		DLCore core = new DefaultCore();
-		core.defineTypeFromClass(User.class, "User");
+		core.defineType(core.createType(User.class), "User");
 
 		for (int c = 0; c < CYCLES; ++c) {
 
