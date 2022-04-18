@@ -40,6 +40,7 @@ import de.s42.dl.instances.SimpleTypeDLInstance;
 import de.s42.dl.types.DefaultDLType;
 import de.s42.dl.util.DLHelper;
 import de.s42.dl.util.DLHelper.DLFileType;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -73,8 +74,9 @@ public class GuiCore extends DefaultCore
 		// core types
 		defineType(new RectangleDLType());
 		defineType(createType(List.class));
-		//defineTypeFromClass(Object[].class);
-		//defineTypeFromClass(PropertyChangeListener[].class);
+		defineArrayType(Object.class);
+		defineType(createType(PropertyChangeListener.class));
+		defineArrayType(PropertyChangeListener.class);		
 		defineType(createType(Action.class));
 		defineType(createType(AbstractAction.class));
 		defineType(createType(Component.class));
@@ -100,13 +102,6 @@ public class GuiCore extends DefaultCore
 
 		// print current core types as dl file
 		DLHelper.writeTypesToFile(this, BASE_PATH.resolve(TYPES_PATH), DLFileType.HRF);
-
-		/* @test is the types file readable
-		DefaultCore tCore = new DefaultCore();
-		tCore.defineType(i18nType);
-		tCore.defineType(new RectangleDLType());
-		tCore.parseFile(BASE_PATH.resolve(TYPES_PATH));
-		 */
 	}
 
 	public View createView(Path viewFile)
