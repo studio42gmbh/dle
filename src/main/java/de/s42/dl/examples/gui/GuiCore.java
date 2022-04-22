@@ -25,7 +25,6 @@
 //</editor-fold>
 package de.s42.dl.examples.gui;
 
-import de.s42.dl.DLType;
 import de.s42.dl.examples.gui.components.GuiWindow;
 import de.s42.dl.core.DefaultCore;
 import de.s42.dl.examples.gui.actions.DebugAction;
@@ -36,7 +35,6 @@ import de.s42.dl.examples.gui.components.Panel;
 import de.s42.dl.examples.gui.components.TextComponent;
 import de.s42.dl.examples.gui.components.View;
 import de.s42.dl.exceptions.DLException;
-import de.s42.dl.instances.SimpleTypeDLInstance;
 import de.s42.dl.types.DefaultDLType;
 import de.s42.dl.util.DLHelper;
 import de.s42.dl.util.DLHelper.DLFileType;
@@ -71,12 +69,10 @@ public class GuiCore extends DefaultCore
 	{
 		assert window != null;
 
-		// core types
+		// Core types
 		defineType(new RectangleDLType());
-		defineType(createType(List.class));
-		defineArrayType(Object.class);
 		defineType(createType(PropertyChangeListener.class));
-		defineArrayType(PropertyChangeListener.class);		
+		defineArrayType(PropertyChangeListener.class);
 		defineType(createType(Action.class));
 		defineType(createType(AbstractAction.class));
 		defineType(createType(Component.class));
@@ -85,11 +81,11 @@ public class GuiCore extends DefaultCore
 		defineType(createType(Label.class), "Label");
 		defineType(createType(Panel.class), "Panel");
 
-		// allow to access window
-		DLType windowType = defineType(createType(GuiWindow.class), "GuiWindow");
-		addExported(new SimpleTypeDLInstance<>(window, windowType, "window"));
+		// Allow to access window
+		defineType(createType(GuiWindow.class), "GuiWindow");
+		addExported("window", window);
 
-		// i18n and l10n
+		// I18n and L10n
 		DefaultDLType i18nType = new DefaultDLType(I18N.class.getName());
 		i18nType.setAllowDynamicAttributes(true);
 		defineType(i18nType);
@@ -97,10 +93,10 @@ public class GuiCore extends DefaultCore
 		i18n.init(BASE_PATH.resolve(L10N_PATH));
 		addExported(i18n);
 
-		// implementation types
+		// Implementation types
 		defineType(createType(DebugAction.class), "DebugAction");
 
-		// print current core types as dl file
+		// Print current core types as dl file
 		DLHelper.writeTypesToFile(this, BASE_PATH.resolve(TYPES_PATH), DLFileType.HRF);
 	}
 

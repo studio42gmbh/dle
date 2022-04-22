@@ -43,9 +43,18 @@ public abstract class Tag
 		this.tag = tag;
 	}
 
-	abstract protected void toHtmlContent(StringBuilder builder);
+	protected void toHtmlTagContent(StringBuilder builder)
+	{
+	}
 
-	abstract protected boolean hasContent();
+	protected void toHtmlContent(StringBuilder builder)
+	{
+	}
+
+	protected boolean hasContent()
+	{
+		return false;
+	}
 
 	protected void toHtml(StringBuilder builder)
 	{
@@ -57,12 +66,12 @@ public abstract class Tag
 		if (getName() != null) {
 			builder.append(" id=\"").append(getName()).append("\"");
 		}
-		
+
 		// Add classes
 		String[] clss = getClasses();
 		if (clss != null && clss.length > 0) {
 			builder.append(" class=\"");
-			
+
 			boolean first = true;
 			for (String cls : clss) {
 				if (!first) {
@@ -71,9 +80,11 @@ public abstract class Tag
 				first = false;
 				builder.append(cls);
 			}
-				
+
 			builder.append("\"");
 		}
+
+		toHtmlTagContent(builder);
 
 		if (hasContent()) {
 			builder.append(">");

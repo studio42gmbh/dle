@@ -25,13 +25,18 @@
 //</editor-fold>
 package de.s42.dl.examples.html.tags;
 
+import de.s42.dl.DLAnnotation.AnnotationDL;
+import de.s42.dl.annotations.ContainOnlyDLAnnotation;
+
 /**
  *
  * @author Benjamin Schiller
  */
-public class BodyTag extends ContainerTag
+@AnnotationDL(value = ContainOnlyDLAnnotation.DEFAULT_SYMBOL, parameters = {DivTag.NAME, "0", "1000"})
+public class BodyTag extends ContainerTag implements ContainedInHtml
 {
 
+	@SuppressWarnings("FieldNameHidesFieldInSuperclass")
 	public static final String NAME = "body";
 
 	public BodyTag()

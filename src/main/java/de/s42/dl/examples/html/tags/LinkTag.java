@@ -2,7 +2,7 @@
 /*
  * The MIT License
  * 
- * Copyright 2022 Studio 42 GmbH (https://www.s42m.de).
+ * Copyright 2022 Studio 42 GmbH ( https://www.s42m.de ).
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,71 +23,57 @@
  * THE SOFTWARE.
  */
 //</editor-fold>
-package de.s42.dl.examples.gui.components;
+package de.s42.dl.examples.html.tags;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import de.s42.dl.java.DLContainer;
+import de.s42.dl.DLAttribute.AttributeDL;
 
 /**
  *
  * @author Benjamin Schiller
  */
-public class Panel extends Component implements DLContainer<Component>
+public class LinkTag extends ContainerTag implements ContainedInHead
 {
 
-	protected final List<Component> components = new ArrayList<>();
+	@SuppressWarnings("FieldNameHidesFieldInSuperclass")
+	public static final String NAME = "link";
 
-	@Override
-	public JComponent createJComponent()
+	@AttributeDL(defaultValue = "stylesheet")
+	protected String rel;
+
+	@AttributeDL(required = true)
+	protected String href;
+
+	public LinkTag()
 	{
-		JPanel panel = new JPanel();
-
-		panel.setBounds(getBounds());
-		panel.setLayout(null);
-		panel.setBackground(Color.gray);
-
-		// Iterate components and add them to content pane
-		for (Component component : components) {
-
-			JComponent jComponent = component.createJComponent();
-			panel.add(jComponent);
-		}
-
-		return panel;
+		super(NAME);
 	}
-
+	
 	@Override
-	public void addChild(String name, Component child)
+	protected void toHtmlTagContent(StringBuilder builder)
 	{
-		assert child != null;
-
-		addComponent(child);
+		builder.append(" rel=\"").append(getRel()).append("\"");
+		builder.append(" href=\"").append(getHref()).append("\"");
 	}
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
-	public List<Component> getComponents()
+	public String getRel()
 	{
-		return Collections.unmodifiableList(components);
+		return rel;
 	}
 
-	public void setComponents(List<Component> components)
+	public void setRel(String rel)
 	{
-		assert components != null;
-
-		this.components.clear();
-		this.components.addAll(components);
+		this.rel = rel;
 	}
 
-	public void addComponent(Component component)
+	public String getHref()
 	{
-		assert component != null;
+		return href;
+	}
 
-		components.add(component);
+	public void setHref(String href)
+	{
+		this.href = href;
 	}
 	//</editor-fold>
 }

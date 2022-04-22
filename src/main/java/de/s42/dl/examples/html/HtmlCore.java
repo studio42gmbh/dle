@@ -31,6 +31,7 @@ import de.s42.dl.examples.html.tags.BodyTag;
 import de.s42.dl.examples.html.tags.ContainerTag;
 import de.s42.dl.examples.html.tags.DivTag;
 import de.s42.dl.examples.html.tags.H1Tag;
+import de.s42.dl.examples.html.tags.HeadTag;
 import de.s42.dl.examples.html.tags.HtmlTag;
 import de.s42.dl.examples.html.tags.Tag;
 import de.s42.dl.examples.html.tags.PTag;
@@ -40,7 +41,10 @@ import de.s42.dl.exceptions.InvalidInstance;
 import de.s42.dl.instances.SimpleTypeDLInstance;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
+import de.s42.dl.examples.html.tags.ContainedInHtml;
+import de.s42.dl.examples.html.tags.LinkTag;
+import de.s42.dl.examples.html.tags.ScriptTag;
+import de.s42.dl.examples.html.tags.TitleTag;
 
 /**
  *
@@ -61,18 +65,24 @@ public class HtmlCore extends DefaultCore
 
 	private void init() throws IOException, DLException
 	{
-		defineArrayType(String.class);
-		defineType(createType(List.class));
+		// Abstract basic html types
 		defineType(createType(Tag.class));
+		defineType(createType(ContainedInHtml.class));
 		defineType(createType(ContainerTag.class));
 		defineType(createType(TextTag.class));
 
-		defineType(createType(BodyTag.class), BodyTag.NAME);
+		// Concrete tag types
 		defineType(createType(HtmlTag.class), HtmlTag.NAME);
+		defineType(createType(HeadTag.class), HeadTag.NAME);
+		defineType(createType(BodyTag.class), BodyTag.NAME);
+		defineType(createType(TitleTag.class), TitleTag.NAME);
+		defineType(createType(ScriptTag.class), ScriptTag.NAME);
+		defineType(createType(LinkTag.class), LinkTag.NAME);
 		defineType(createType(DivTag.class), DivTag.NAME);
-		defineType(createType(PTag.class), PTag.NAME);
 		defineType(createType(H1Tag.class), H1Tag.NAME);
+		defineType(createType(PTag.class), PTag.NAME);
 
+		// Dont allow changing the language from within DL
 		setAllowDefineAnnotations(false);
 		setAllowDefinePragmas(false);
 		setAllowDefineTypes(false);

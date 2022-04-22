@@ -25,10 +25,9 @@
 //</editor-fold>
 package de.s42.dl.examples.simpleconfiguration;
 
-import de.s42.dl.DLAnnotation.AnnotationDL;
-import de.s42.dl.DLAttribute.AttributeDL;
-import de.s42.dl.annotations.LengthDLAnnotation;
-import de.s42.dl.annotations.RequiredOrDLAnnotation;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -38,19 +37,13 @@ import java.util.UUID;
 public class Configuration
 {
 
-	@AnnotationDL(value = LengthDLAnnotation.DEFAULT_SYMBOL, parameters = {"10", "20"})
-	@AttributeDL(required = true)
 	protected String login;
-
-	@AnnotationDL(value = RequiredOrDLAnnotation.DEFAULT_SYMBOL, parameters = {"id"})
 	protected UUID uuid;
-
-	@AnnotationDL(value = RequiredOrDLAnnotation.DEFAULT_SYMBOL, parameters = {"uuid"})
 	protected int id;
-
 	protected double depth;
-
 	protected boolean active;
+	protected String[] tags;
+	protected final List<Double> scores = new ArrayList<>();
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
 	public String getLogin()
@@ -101,6 +94,27 @@ public class Configuration
 	public void setDepth(double depth)
 	{
 		this.depth = depth;
+	}
+
+	public String[] getTags()
+	{
+		return tags;
+	}
+
+	public void setTags(String[] tags)
+	{
+		this.tags = tags;
+	}
+
+	public List<Double> getScores()
+	{
+		return Collections.unmodifiableList(scores);
+	}
+
+	public void setScores(List<Double> scores)
+	{
+		this.scores.clear();
+		this.scores.addAll(scores);
 	}
 	// </editor-fold>	
 }

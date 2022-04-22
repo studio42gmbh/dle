@@ -9,4 +9,6 @@ Configuration {
 	depth	: 1.5629345793985692;
 	active	: true;
 	uuid	: "ad232384-4a04-4119-9e95-4753f31e3b09";
+	tags	: modern, simple, flexible;
+	scores	: 1.453, 2.534, 9.232, 4.553;
 }

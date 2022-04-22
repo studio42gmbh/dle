@@ -47,7 +47,7 @@ public class RectangleDLType extends DefaultDLType
 	{
 		assert sources != null;
 
-		// split given a 1 string parameter into 4
+		// Split given a 1 string parameter into 4
 		if ((sources.length == 1) && sources[0] instanceof String) {
 			sources = ((String) sources[0]).split("\\s*,\\s*");
 		}

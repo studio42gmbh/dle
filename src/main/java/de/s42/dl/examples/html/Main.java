@@ -61,11 +61,15 @@ public class Main
 		HtmlTag html = core.parseHtml(HTML_DL_FILE);
 
 		// Find body tag and then append a p tag to it or error if not found
-		html.getChild(BodyTag.class).ifPresentOrElse((tag) -> {
-			tag.addChild(new PTag("Added this text in Java!"));
-		}, () -> {
-			log.error("No body tag found");
-		});
+		html.getChild(BodyTag.class).ifPresentOrElse(
+			// Body found
+			(tag) -> {
+				tag.addChild(new PTag("Added this text in Java!"));
+			},
+			// Not found
+			() -> {
+				log.error("No body tag found");
+			});
 
 		// Create and store the domain model as html file
 		FilesHelper.writeStringToFile(HTML_FILE, html.toHtml());

@@ -48,16 +48,16 @@ public class GuiWindow extends JFrame
 		assert core != null;
 		assert mainView != null;
 
-		// load the main view
+		// Load the main view
 		View view = core.createView(mainView);
 
 		java.awt.EventQueue.invokeAndWait(() -> {
 			try {
 
-				// make Swing look like the system
+				// Make Swing look like the system
 				javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
 
-				// set size and center window
+				// Set size and center window
 				setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 				setSize(640, 400);
 				setLocationRelativeTo(null);

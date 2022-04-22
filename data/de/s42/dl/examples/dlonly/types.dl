@@ -63,4 +63,3 @@ alias Config Configuration;
 pragma disableDefineTypes;
 pragma disableDefineAnnotations;
 pragma disableDefinePragmas;
-pragma disableRequire;

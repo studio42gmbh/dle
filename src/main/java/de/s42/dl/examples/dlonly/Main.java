@@ -32,8 +32,10 @@ import de.s42.dl.DLCore;
 import de.s42.dl.DLEnum;
 import de.s42.dl.DLInstance;
 import de.s42.dl.DLModule;
+import de.s42.dl.DLPragma;
 import de.s42.dl.DLType;
 import de.s42.dl.core.BaseDLCore;
+import de.s42.dl.exceptions.InvalidPragma;
 import de.s42.dl.pragmas.DefinePragmaPragma;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
@@ -46,7 +48,7 @@ import java.util.Optional;
  */
 public class Main
 {
-
+	
 	protected final static String MODULE_PATH = "de/s42/dl/examples/dlonly/module.dl";
 
 	private final static Logger log = LogManager.getLogger(Main.class.getName());

@@ -71,7 +71,7 @@ public abstract class ContainerTag extends Tag implements DLContainer<Tag>
 		assert child != null;
 
 		addChild(child.getName(), child);
-		
+
 		return child;
 	}
 

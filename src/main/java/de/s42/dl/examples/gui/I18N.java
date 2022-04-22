@@ -54,7 +54,7 @@ public class I18N extends DefaultDLInstance
 	{
 		assert file != null;
 
-		// load given properties file as attributes of this instance
+		// Load given properties file as attributes of this instance
 		Properties prop = new Properties();
 		try (InputStream in = Files.newInputStream(file)) {
 			prop.load(in);

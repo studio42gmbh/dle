@@ -59,11 +59,11 @@ public class View extends Component
 
 			panel.setLayout(null);
 
-			// load components from main view
+			// Load components from main view
 			final List<Component> components;
 			components = core.parse(file.toString()).getChildrenAsJavaType(Component.class, core);
 
-			// iterate components and add them to content pane
+			// Iterate components and add them to content pane
 			for (Component component : components) {
 
 				JComponent jComponent = component.createJComponent();
