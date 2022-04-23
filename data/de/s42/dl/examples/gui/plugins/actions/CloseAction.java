@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 //</editor-fold>
-package de.s42.dl.examples.gui.actions;
+package de.s42.dl.examples.gui.plugins.actions;
 
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.examples.gui.components.GuiWindow;
@@ -47,7 +47,7 @@ public class CloseAction extends AbstractAction
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		log.debug("Closing window ...");
+		log.info("Plugin! Closing window ...");
 
 		window.dispose();
 	}

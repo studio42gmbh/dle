@@ -1,0 +1,10 @@
+/**
+ * Load a plugin class from the directory dynamically and JITs it
+ */
+
+pragma loadPluginClass(
+	de.s42.dl.examples.gui.plugins.actions.CloseAction, 
+	"de/s42/dl/examples/gui/plugins/actions/CloseAction.java"
+);
+
+alias CloseAction de.s42.dl.examples.gui.plugins.actions.CloseAction;

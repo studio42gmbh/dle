@@ -25,6 +25,7 @@
 //</editor-fold>
 package de.s42.dl.examples.gui;
 
+import de.s42.base.compile.InvalidCompilation;
 import de.s42.dl.examples.gui.components.GuiWindow;
 import de.s42.dl.core.DefaultCore;
 import de.s42.dl.examples.gui.actions.DebugAction;
@@ -34,14 +35,17 @@ import de.s42.dl.examples.gui.components.Label;
 import de.s42.dl.examples.gui.components.Panel;
 import de.s42.dl.examples.gui.components.TextComponent;
 import de.s42.dl.examples.gui.components.View;
+import de.s42.dl.examples.gui.pragmas.LoadPluginClassPragma;
 import de.s42.dl.exceptions.DLException;
 import de.s42.dl.types.DefaultDLType;
 import de.s42.dl.util.DLHelper;
 import de.s42.dl.util.DLHelper.DLFileType;
+import de.s42.log.LogManager;
+import de.s42.log.Logger;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
@@ -52,11 +56,14 @@ import javax.swing.Action;
 public class GuiCore extends DefaultCore
 {
 
-	protected final static Path BASE_PATH = Path.of("de/s42/dl/examples/gui/");
-	protected final static Path L10N_PATH = Path.of("l10n_de.properties");
-	protected final static Path TYPES_PATH = Path.of("types.local.dlt");
+	private final static Logger log = LogManager.getLogger(GuiCore.class.getName());
 
-	public static GuiCore create(GuiWindow window) throws IOException, DLException
+	protected final static Path BASE_PATH = Path.of("de/s42/dl/examples/gui/");
+	protected final static Path L10N_PATH = BASE_PATH.resolve(Path.of("l10n_de.properties"));
+	protected final static Path TYPES_PATH = BASE_PATH.resolve(Path.of("types.local.dlt"));
+	protected final static Path PLUGINS_PATH = BASE_PATH.resolve(Path.of("plugins/"));
+
+	public static GuiCore create(GuiWindow window) throws IOException, DLException, InvalidCompilation
 	{
 		assert window != null;
 
@@ -65,9 +72,12 @@ public class GuiCore extends DefaultCore
 		return core;
 	}
 
-	private void init(GuiWindow window) throws IOException, DLException
+	private void init(GuiWindow window) throws IOException, DLException, InvalidCompilation
 	{
 		assert window != null;
+
+		// Pragmas
+		definePragma(new LoadPluginClassPragma());
 
 		// Core types
 		defineType(new RectangleDLType());
@@ -90,14 +100,26 @@ public class GuiCore extends DefaultCore
 		i18nType.setAllowDynamicAttributes(true);
 		defineType(i18nType);
 		I18N i18n = new I18N(i18nType);
-		i18n.init(BASE_PATH.resolve(L10N_PATH));
+		i18n.init(L10N_PATH);
 		addExported(i18n);
 
 		// Implementation types
 		defineType(createType(DebugAction.class), "DebugAction");
+		
+		// Load plugins
+		Files.find(PLUGINS_PATH, 4, (file, attributes) -> {
+			return file.getFileName().toString().equals("plugin.dl");
+		}).forEach((file) -> {
+			try {
+				log.debug("Loading plugin", file.toAbsolutePath());
+				parse(file.toString());
+			} catch (DLException ex) {
+				log.error(ex, "Error loading plugin", file.toAbsolutePath());
+			}
+		});
 
 		// Print current core types as dl file
-		DLHelper.writeTypesToFile(this, BASE_PATH.resolve(TYPES_PATH), DLFileType.HRF);
+		DLHelper.writeTypesToFile(this, TYPES_PATH, DLFileType.HRF);
 	}
 
 	public View createView(Path viewFile)

@@ -1,0 +1,6 @@
+/**
+ * Load a plugin class from the directory dynamically and JITs it
+ */
+
+// shows loading a custom action
+require "de/s42/dl/examples/gui/plugins/actions/CloseAction.dlt";

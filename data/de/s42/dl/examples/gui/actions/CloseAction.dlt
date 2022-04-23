@@ -1,5 +1,0 @@
-/**
- * Defines the type from introspecting the class de.s42.dl.examples.gui.actions.CloseAction
- */
-extern type de.s42.dl.examples.gui.actions.CloseAction;
-alias CloseAction de.s42.dl.examples.gui.actions.CloseAction;

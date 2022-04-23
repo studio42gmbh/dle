@@ -2,9 +2,6 @@
  * Test main view
  */
 
-// shows loading a custom action
-require "de/s42/dl/examples/gui/actions/CloseAction.dlt";
-
 Button close {
 	bounds : 10, 10, 100, 50;
 	text : $i18n.mainCloseText;
