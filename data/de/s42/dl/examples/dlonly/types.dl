@@ -1,6 +1,7 @@
 // define enums and types
 
 extern type de.s42.dl.types.ObjectDLType; 
+extern type de.s42.dl.types.ClassDLType; 
 extern type de.s42.dl.types.SymbolDLType; 
 extern type de.s42.dl.types.StringDLType;
 extern type de.s42.dl.types.UUIDDLType;
@@ -8,6 +9,8 @@ extern type de.s42.dl.types.PathDLType;
 extern type de.s42.dl.types.BooleanDLType;
 alias boolean de.s42.dl.types.BooleanDLType;
 extern type de.s42.dl.types.ArrayDLType;
+extern type de.s42.dl.types.ListDLType;
+extern type de.s42.dl.types.MapDLType;
 
 extern annotation de.s42.dl.annotations.DynamicDLAnnotation;
 extern annotation de.s42.dl.annotations.RequiredDLAnnotation;
@@ -29,26 +32,35 @@ enum MemberStatus @preliminary
 	Guest, Member, Gold, VIP
 }
 
-type Achievement @dynamic extends Object
+type Tagged extends Object
 {
-	Symbol hrid @required @length(3, 100) @unique;
-	UUID id @generateUUID @required;
+	Array<String> tags;
 }
 
-type Media @dynamic extends Object
+type Achievement extends Tagged
+{
+	Symbol hrid @required @length(3, 100) @unique;
+	UUID id @required;
+
+	// if for a certain reason (security, side effects) you can not map a class into DL
+	List<Class> actions; 
+}
+
+type Media @dynamic extends Tagged
 {
 	String display @required @length(3, 100);
 	Path path @required @isFile;
 	UUID id @generateUUID @required;
 }
 
-type User @dynamic @contain(Media, 0, 100) extends Object contains Media
+type User @contain(Media, 0, 100) extends Object contains Media
 {
 	String login @required @length(3, 100) @unique;
 	UUID id @generateUUID @required;
 	boolean active : true;
 	MemberStatus status : Guest;
 	Array<Achievement> achievements;
+	Map<String, Object> flexAttributes;
 }
 
 final type Configuration @contain(User, 1, 3) extends Object contains User 

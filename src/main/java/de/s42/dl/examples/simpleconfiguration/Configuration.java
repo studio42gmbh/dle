@@ -27,7 +27,9 @@ package de.s42.dl.examples.simpleconfiguration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -44,6 +46,7 @@ public class Configuration
 	protected boolean active;
 	protected String[] tags;
 	protected final List<Double> scores = new ArrayList<>();
+	protected Map<String, Double> mapped = new HashMap<>();
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
 	public String getLogin()
@@ -115,6 +118,17 @@ public class Configuration
 	{
 		this.scores.clear();
 		this.scores.addAll(scores);
+	}
+
+	public Map<String, Double> getMapped()
+	{
+		return Collections.unmodifiableMap(mapped);
+	}
+
+	public void setMapped(Map<String, Double> mapped)
+	{
+		this.mapped.clear();
+		this.mapped.putAll(mapped);
 	}
 	// </editor-fold>	
 }

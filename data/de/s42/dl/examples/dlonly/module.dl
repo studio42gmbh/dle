@@ -5,14 +5,16 @@ require "de/s42/dl/examples/dlonly/types.dl";
 
 // define data
 
-Achievement dailySmasher {
-	hrid : DailySmasher;
-	id : "16e6b093-59bc-4f6c-9560-bd5789adda0f";
-}
-
 Achievement hundredLogins {
 	hrid : HundredLogins;
 	id : "a9768614-00cd-4341-82c9-193883423abc";
+}
+
+Achievement dailySmasher {
+	hrid : DailySmasher;
+	id : "16e6b093-59bc-4f6c-9560-bd5789adda0f";
+	tags : daily, featured;
+	actions : de.s42.dl.examples.dlonly.CheckLoginsAction;
 }
 
 Config config @export {
@@ -31,13 +33,13 @@ Config config @export {
 	User ben {
 		login : "Ben";
 		status : Member;
-		customValue : "Only set for Ben";
 		achievements : $dailySmasher, $hundredLogins;
+		flexAttributes : "founder", true, "heroCount", 15, "bestRating", 8.156;
 
 		Media {
 			display : "Module File";
 			path : "de/s42/dl/examples/dlonly/module.dl";
-			tags : dl, favorites, ascii;
+			tags : dl, favorites, ascii, 42;
 		}
 	}
 }

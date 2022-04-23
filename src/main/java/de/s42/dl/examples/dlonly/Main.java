@@ -138,7 +138,23 @@ public class Main
 
 		builder
 			.append("\n");
+		
+		for (DLType parents : type.getParents()) {
 
+			builder
+				.append("  Parent ")
+				.append(parents.getCanonicalName())
+				.append("\n");
+		}
+		
+		for (DLType contains : type.getContainedTypes()) {
+
+			builder
+				.append("  Contains ")
+				.append(contains.getCanonicalName())
+				.append("\n");
+		}
+		
 		for (DLAttribute attribute : type.getAttributes()) {
 
 			builder
