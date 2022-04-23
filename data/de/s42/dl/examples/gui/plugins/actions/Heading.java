@@ -23,71 +23,27 @@
  * THE SOFTWARE.
  */
 //</editor-fold>
-package de.s42.dl.examples.gui.components;
+package de.s42.dl.examples.gui.plugins.actions;
 
+import de.s42.dl.examples.gui.components.Label;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import de.s42.dl.java.DLContainer;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Benjamin Schiller
  */
-public class Panel extends Component implements DLContainer<Component>
+public class Heading extends Label
 {
 
-	protected final List<Component> components = new ArrayList<>();
-
 	@Override
-	public JPanel createJComponent()
+	public JLabel createJComponent()
 	{
-		JPanel panel = new JPanel();
+		JLabel component = super.createJComponent();
+	
+		// Just a simple showcase of extending ... in a real case Color would like Font get wrapped ...
+		component.setForeground(Color.orange);
 
-		panel.setBounds(getBounds());
-		panel.setLayout(null);
-		panel.setBackground(Color.gray);
-
-		// Iterate components and add them to content pane
-		for (Component component : components) {
-
-			JComponent jComponent = component.createJComponent();
-			panel.add(jComponent);
-		}
-
-		return panel;
+		return component;
 	}
-
-	@Override
-	public void addChild(String name, Component child)
-	{
-		assert child != null;
-
-		addComponent(child);
-	}
-
-	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
-	public List<Component> getComponents()
-	{
-		return Collections.unmodifiableList(components);
-	}
-
-	public void setComponents(List<Component> components)
-	{
-		assert components != null;
-
-		this.components.clear();
-		this.components.addAll(components);
-	}
-
-	public void addComponent(Component component)
-	{
-		assert component != null;
-
-		components.add(component);
-	}
-	//</editor-fold>
 }

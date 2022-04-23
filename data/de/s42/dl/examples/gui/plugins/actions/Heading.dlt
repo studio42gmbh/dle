@@ -1,0 +1,10 @@
+/**
+ * Load the Heading Component
+ */
+
+pragma loadPluginClass(
+	de.s42.dl.examples.gui.plugins.actions.Heading, 
+	"de/s42/dl/examples/gui/plugins/actions/Heading.java"
+);
+
+alias Heading de.s42.dl.examples.gui.plugins.actions.Heading;

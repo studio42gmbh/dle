@@ -28,6 +28,7 @@ package de.s42.dl.examples.gui.components;
 import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.annotations.LengthDLAnnotation;
+import de.s42.dl.examples.gui.Font;
 
 /**
  *
@@ -37,8 +38,11 @@ public abstract class TextComponent extends Component
 {
 
 	@AttributeDL(required = true)
-	@AnnotationDL(value = LengthDLAnnotation.DEFAULT_SYMBOL, parameters = {"0", "100"})
+	@AnnotationDL(value = LengthDLAnnotation.DEFAULT_SYMBOL, parameters = {"0", "10000"})
 	protected String text;
+
+	@AttributeDL
+	protected Font font;
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
 	public String getText()
@@ -49,6 +53,16 @@ public abstract class TextComponent extends Component
 	public void setText(String text)
 	{
 		this.text = text;
+	}
+
+	public Font getFont()
+	{
+		return font;
+	}
+
+	public void setFont(Font font)
+	{
+		this.font = font;
 	}
 	//</editor-fold>
 }

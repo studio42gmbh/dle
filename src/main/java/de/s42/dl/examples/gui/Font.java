@@ -2,7 +2,7 @@
 /*
  * The MIT License
  * 
- * Copyright 2022 Studio 42 GmbH (https://www.s42m.de).
+ * Copyright 2022 Studio 42 GmbH ( https://www.s42m.de ).
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,52 +23,80 @@
  * THE SOFTWARE.
  */
 //</editor-fold>
-package de.s42.dl.examples.gui.components;
+package de.s42.dl.examples.gui;
 
-import de.s42.base.strings.StringHelper;
+import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
-import java.awt.Rectangle;
-import javax.swing.JComponent;
+import de.s42.dl.annotations.RangeDLAnnotation;
 
 /**
  *
  * @author Benjamin Schiller
  */
-public abstract class Component
+public class Font
 {
 
-	protected String name;
+	@AttributeDL(required = true)
+	protected String face;
 
 	@AttributeDL(required = true)
-	protected Rectangle bounds;
+	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"1", "1000"})
+	protected int size;
 
-	public abstract <ComponentType extends JComponent> ComponentType createJComponent();
+	@AttributeDL
+	protected boolean bold;
 
-	@Override
-	public String toString()
+	@AttributeDL
+	protected boolean italic;
+
+	public java.awt.Font createAwtFont()
 	{
-		return StringHelper.toString(this);
+		int style
+			= (isBold() ? java.awt.Font.BOLD : 0)
+			| (isItalic() ? java.awt.Font.ITALIC : 0);
+
+		return new java.awt.Font(getFace(), style, getSize());
 	}
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
-	public Rectangle getBounds()
+	public String getFace()
 	{
-		return bounds;
+		return face;
 	}
 
-	public void setBounds(Rectangle bounds)
+	public void setFace(String face)
 	{
-		this.bounds = bounds;
+		this.face = face;
 	}
 
-	public String getName()
+	public int getSize()
 	{
-		return name;
+		return size;
 	}
 
-	public void setName(String name)
+	public void setSize(int size)
 	{
-		this.name = name;
+		this.size = size;
+	}
+
+	public boolean isBold()
+	{
+		return bold;
+	}
+
+	public void setBold(boolean bold)
+	{
+		this.bold = bold;
+	}
+
+	public boolean isItalic()
+	{
+		return italic;
+	}
+
+	public void setItalic(boolean italic)
+	{
+		this.italic = italic;
 	}
 	//</editor-fold>	
 }

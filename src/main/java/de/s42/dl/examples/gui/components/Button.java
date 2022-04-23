@@ -25,42 +25,46 @@
 //</editor-fold>
 package de.s42.dl.examples.gui.components;
 
-import de.s42.dl.DLAttribute.AttributeDL;
+import de.s42.dl.java.DLContainer;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Action;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 
 /**
  *
  * @author Benjamin Schiller
  */
-public class Button extends TextComponent
+public class Button extends TextComponent implements DLContainer<Action>
 {
 
-	@AttributeDL(required = true)
-	protected Action action;
+	protected final List<Action> actions = new ArrayList<>();
 
 	@Override
-	public JComponent createJComponent()
+	public JButton createJComponent()
 	{
 		JButton component = new JButton();
 
+		if (getFont() != null) {
+			component.setFont(getFont().createAwtFont());
+		}
 		component.setText(getText());
-		component.setBounds(getBounds());		
-		component.addActionListener(getAction());
+		component.setBounds(getBounds());
+
+		component.addActionListener((evt) -> {
+			for (Action action : actions) {
+				action.actionPerformed(evt);
+			}
+		});
 
 		return component;
 	}
 
-	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
-	public Action getAction()
+	@Override
+	public void addChild(String name, Action child)
 	{
-		return action;
-	}
+		assert child != null;
 
-	public void setAction(Action action)
-	{
-		this.action = action;
+		actions.add(child);
 	}
-	//</editor-fold>	
 }

@@ -2,16 +2,33 @@
  * Test main view
  */
 
-Button close {
-	bounds : 10, 10, 100, 50;
-	text : $i18n.mainCloseText;
-	action : CloseAction {
-		window : $window;
-	};
+Font headingFont {
+	face : "Helvetica";
+	size : 32;
+	bold : true;
+	italic : true;
 }
 
-Label info {
-	bounds : 10, 70, 100, 20;
+Font textFont {
+	face : "Helvetica";
+	size : 12;
+}
+
+Button close {
+	font : $textFont;
+	bounds : 515, 10, 100, 50;
+	text : $i18n.mainCloseText;
+	
+	DebugAction {}
+
+	CloseAction {
+		window : $window;
+	}
+}
+
+Heading info {
+	font : $headingFont;
+	bounds : 10, 10, 200, 40;
 	text : $i18n.mainInfoText;
 }
 
@@ -20,13 +37,16 @@ Panel panel {
 	bounds : 150, 100, 300, 200;
 
 	Label {
+		font : $textFont;
 		bounds : 10, 10, 100, 20;
 		text : $i18n.mainPanelLabelText;
 	}
 
 	Button {
+		font : $textFont;
 		bounds : 120, 10, 100, 50;
 		text : $i18n.mainDebugText;
-		action : DebugAction {};
+		
+		DebugAction {}
 	}
 }

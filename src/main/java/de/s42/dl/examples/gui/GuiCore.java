@@ -79,12 +79,15 @@ public class GuiCore extends DefaultCore
 		// Pragmas
 		definePragma(new LoadPluginClassPragma());
 
-		// Core types
-		defineType(new RectangleDLType());
-		defineType(createType(PropertyChangeListener.class));
-		defineArrayType(PropertyChangeListener.class);
+		// Core types from Swing
 		defineType(createType(Action.class));
 		defineType(createType(AbstractAction.class));
+		
+		// Core types
+		defineType(new RectangleDLType());
+		defineType(createType(Font.class), "Font");
+		
+		// Component types
 		defineType(createType(Component.class));
 		defineType(createType(TextComponent.class));
 		defineType(createType(Button.class), "Button");

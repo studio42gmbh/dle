@@ -1,5 +1,5 @@
 /**
- * Load a plugin class from the directory dynamically and JITs it
+ * Loads the CloseAction
  */
 
 pragma loadPluginClass(

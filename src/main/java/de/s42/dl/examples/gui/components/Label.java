@@ -25,7 +25,6 @@
 //</editor-fold>
 package de.s42.dl.examples.gui.components;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 /**
@@ -36,13 +35,16 @@ public class Label extends TextComponent
 {
 
 	@Override
-	public JComponent createJComponent()
+	public JLabel createJComponent()
 	{
 		JLabel component = new JLabel();
-		
+
+		if (getFont() != null) {
+			component.setFont(getFont().createAwtFont());
+		}
 		component.setText(getText());
 		component.setBounds(getBounds());
-		
+
 		return component;
 	}
 }
