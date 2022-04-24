@@ -5,6 +5,10 @@ require "de/s42/dl/examples/dlonly/types.dl";
 
 // define data
 
+boolean debugMode : false;
+boolean suppressWarnings : false;
+String lastName : Smith;
+
 Achievement hundredLogins {
 	hrid : HundredLogins;
 	id : "a9768614-00cd-4341-82c9-193883423abc";
@@ -18,10 +22,10 @@ Achievement dailySmasher {
 }
 
 Config config @export {
-	debug : true;
+	debug : $debugMode | !$suppressWarnings;
 
 	User arthur {
-		login : "Arthur";
+		login : "Arthur" + " " + $lastName;
 	}
 
 	User thomas {
@@ -34,12 +38,12 @@ Config config @export {
 		login : "Ben";
 		status : Member;
 		achievements : $dailySmasher, $hundredLogins;
-		flexAttributes : "founder", true, "heroCount", 15, "bestRating", 8.156;
+		flexAttributes : "founder", true, "heroCount", 15 * 5, "bestRating", 8.156E2 / (1.4 + 44);
 
 		Media {
 			display : "Module File";
 			path : "de/s42/dl/examples/dlonly/module.dl";
-			tags : dl, favorites, ascii, 42;
+			tags : dl, favorites, ascii, 40 + 2;
 		}
 	}
 }

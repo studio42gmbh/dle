@@ -46,7 +46,7 @@ public class Main
 		log.info("Starting GUI Example");
 
 		// Create main window
-		GuiWindow window = new GuiWindow("DL Gui");
+		GuiWindow window = new GuiWindow("DL Gui Example", 640, 400);
 
 		// Create the dl core
 		GuiCore core = GuiCore.create(window);

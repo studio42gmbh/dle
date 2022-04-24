@@ -42,7 +42,6 @@ import de.s42.dl.util.DLHelper;
 import de.s42.dl.util.DLHelper.DLFileType;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -82,11 +81,11 @@ public class GuiCore extends DefaultCore
 		// Core types from Swing
 		defineType(createType(Action.class));
 		defineType(createType(AbstractAction.class));
-		
+
 		// Core types
 		defineType(new RectangleDLType());
 		defineType(createType(Font.class), "Font");
-		
+
 		// Component types
 		defineType(createType(Component.class));
 		defineType(createType(TextComponent.class));
@@ -97,7 +96,10 @@ public class GuiCore extends DefaultCore
 		// Allow to access window
 		defineType(createType(GuiWindow.class), "GuiWindow");
 		addExported("window", window);
-
+		addExported("width", window.getContentWidth());
+		addExported("height", window.getContentHeight());
+		
+		
 		// I18n and L10n
 		DefaultDLType i18nType = new DefaultDLType(I18N.class.getName());
 		i18nType.setAllowDynamicAttributes(true);
@@ -108,7 +110,7 @@ public class GuiCore extends DefaultCore
 
 		// Implementation types
 		defineType(createType(DebugAction.class), "DebugAction");
-		
+
 		// Load plugins
 		Files.find(PLUGINS_PATH, 4, (file, attributes) -> {
 			return file.getFileName().toString().equals("plugin.dl");

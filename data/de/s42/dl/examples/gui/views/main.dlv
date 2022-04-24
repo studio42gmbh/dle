@@ -2,22 +2,24 @@
  * Test main view
  */
 
+int baseFontSize : 12;
+
 Font headingFont {
 	face : "Helvetica";
-	size : 32;
+	size : $baseFontSize * 2.5;
 	bold : true;
 	italic : true;
 }
 
 Font textFont {
 	face : "Helvetica";
-	size : 12;
+	size : $baseFontSize;
 }
 
 Button close {
 	font : $textFont;
-	bounds : 515, 10, 100, 50;
-	text : $i18n.mainCloseText;
+	bounds : $width - 15 * 10 - 10, 10, 15 * 10, 50;
+	text : "<" + $i18n.mainCloseText + ">";
 	
 	DebugAction {}
 
@@ -28,7 +30,7 @@ Button close {
 
 Heading info {
 	font : $headingFont;
-	bounds : 10, 10, 200, 40;
+	bounds : 10, 10, 300, 40;
 	text : $i18n.mainInfoText;
 }
 
@@ -38,13 +40,13 @@ Panel panel {
 
 	Label {
 		font : $textFont;
-		bounds : 10, 10, 100, 20;
-		text : $i18n.mainPanelLabelText;
+		bounds : 10, 10, 200, 20;
+		text : "Hier $\"\ Debug Text";
 	}
 
 	Button {
 		font : $textFont;
-		bounds : 120, 10, 100, 50;
+		bounds : 120, 110, 100, 50;
 		text : $i18n.mainDebugText;
 		
 		DebugAction {}

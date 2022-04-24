@@ -26,8 +26,10 @@
 package de.s42.dl.examples.gui.components;
 
 import de.s42.dl.examples.gui.GuiCore;
+import java.awt.Dimension;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -38,9 +40,25 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class GuiWindow extends JFrame
 {
 
-	public GuiWindow(String title)
+	protected int contentWidth;
+	protected int contentHeight;
+
+	public GuiWindow(String title, int contentWidth, int contentHeight)
 	{
 		super(title);
+
+		this.contentWidth = contentWidth;
+		this.contentHeight = contentHeight;
+	}
+
+	public int getContentWidth()
+	{
+		return contentWidth;
+	}
+
+	public int getContentHeight()
+	{
+		return contentHeight;
 	}
 
 	public void init(GuiCore core, Path mainView) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, InterruptedException, InvocationTargetException
@@ -51,26 +69,25 @@ public class GuiWindow extends JFrame
 		// Load the main view
 		View view = core.createView(mainView);
 
-		java.awt.EventQueue.invokeAndWait(() -> {
-			try {
+		// Exit on close window
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-				// Make Swing look like the system
-				javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+		// Make Swing look like the system
+		javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
 
-				// Set size and center window
-				setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-				setSize(640, 400);
-				setLocationRelativeTo(null);
+		JComponent viewContent = view.createJComponent();
+		getContentPane().add(viewContent);
 
-				getContentPane().add(view.createJComponent());
+		// Set size and fill content pane with view
+		getContentPane().setPreferredSize(new Dimension(getContentWidth(), getContentHeight()));
 
-				setVisible(true);
-			} catch (ClassNotFoundException
-				| IllegalAccessException
-				| InstantiationException
-				| UnsupportedLookAndFeelException ex) {
-				throw new RuntimeException("Error loading window - " + ex.getMessage(), ex);
-			}
+		// Make sure the creation of the window happens in the UI Thread
+		java.awt.EventQueue.invokeLater(() -> {
+
+			// Fit window, center and show
+			pack();
+			setLocationRelativeTo(null);
+			setVisible(true);
 		});
 	}
 }
