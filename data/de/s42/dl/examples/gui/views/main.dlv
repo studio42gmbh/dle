@@ -18,8 +18,12 @@ Font textFont {
 
 Button close {
 	font : $textFont;
-	bounds : $width - 15 * 10 - 10, 10, 15 * 10, 50;
 	text : "<" + $i18n.mainCloseText + ">";
+	bounds : 
+		$window.contentWidth - 15 * 10 - 10, 
+		10, 
+		15 * 10, 
+		50;
 	
 	DebugAction {}
 
@@ -35,8 +39,11 @@ Heading info {
 }
 
 Panel panel {
-
-	bounds : 150, 100, 300, 200;
+	bounds : 
+		10, 
+		100, 
+		$window.contentWidth - 10 - 10, 
+		$window.contentHeight - 100 - 10;
 
 	Label {
 		font : $textFont;
@@ -46,8 +53,12 @@ Panel panel {
 
 	Button {
 		font : $textFont;
-		bounds : 120, 110, 100, 50;
 		text : $i18n.mainDebugText;
+		bounds : 
+			$window.contentWidth / 2 - 50, 
+			110, 
+			100, 
+			50;
 		
 		DebugAction {}
 	}

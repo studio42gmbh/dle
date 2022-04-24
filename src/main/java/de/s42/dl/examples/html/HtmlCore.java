@@ -45,6 +45,7 @@ import de.s42.dl.examples.html.tags.ContainedInHtml;
 import de.s42.dl.examples.html.tags.LinkTag;
 import de.s42.dl.examples.html.tags.ScriptTag;
 import de.s42.dl.examples.html.tags.TitleTag;
+import de.s42.dl.exceptions.InvalidType;
 
 /**
  *
@@ -88,7 +89,7 @@ public class HtmlCore extends DefaultCore
 		setAllowDefineTypes(false);
 	}
 
-	public void setVariable(String key, String value) throws InvalidInstance
+	public void setVariable(String key, String value) throws InvalidInstance, InvalidType
 	{
 		assert key != null;
 		assert value != null;

@@ -96,10 +96,7 @@ public class GuiCore extends DefaultCore
 		// Allow to access window
 		defineType(createType(GuiWindow.class), "GuiWindow");
 		addExported("window", window);
-		addExported("width", window.getContentWidth());
-		addExported("height", window.getContentHeight());
-		
-		
+
 		// I18n and L10n
 		DefaultDLType i18nType = new DefaultDLType(I18N.class.getName());
 		i18nType.setAllowDynamicAttributes(true);
