@@ -4,6 +4,8 @@ extern type de.s42.dl.types.ObjectDLType;
 extern type de.s42.dl.types.ClassDLType; 
 extern type de.s42.dl.types.SymbolDLType; 
 extern type de.s42.dl.types.StringDLType;
+extern type de.s42.dl.types.IntegerDLType;
+alias int de.s42.dl.types.IntegerDLType;
 extern type de.s42.dl.types.UUIDDLType;
 extern type de.s42.dl.types.PathDLType;
 extern type de.s42.dl.types.BooleanDLType;
@@ -26,6 +28,24 @@ pragma definePragma(de.s42.dl.pragmas.DisableDefineAnnotationsPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableDefinePragmasPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableDefineTypesPragma);
 pragma definePragma(de.s42.dl.pragmas.DisableRequirePragma);
+
+int b1 : 0b00000001;
+int b2 : 0b00000010;
+int b3 : 0b00000100;
+int b4 : 0b00001000;
+int b5 : 0b00010000;
+int b6 : 0b00100000;
+int b7 : 0b01000000;
+int b8 : 0b10000000;
+
+type FileFlags @dynamic {
+	int readable	: $b1;
+	int writeable	: $b2;
+	int symlink		: $b4;
+	int slow		: $b6;
+}
+
+FileFlags fileFlags @export;
 
 enum MemberStatus @preliminary
 {
@@ -51,6 +71,7 @@ type Media @dynamic extends Tagged
 	String display @required @length(3, 100);
 	Path path @required @isFile;
 	UUID id @generateUUID @required;
+	int flags;
 }
 
 type User @contain(Media, 0, 100) extends Object contains Media

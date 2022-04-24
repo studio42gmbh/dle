@@ -44,6 +44,7 @@ Config config @export {
 			display : "Module File";
 			path : "de/s42/dl/examples/dlonly/module.dl";
 			tags : dl, favorites, ascii, 40 + 2;
+			flags : $fileFlags.writeable | $fileFlags.symlink | $fileFlags.slow;
 		}
 	}
 }
