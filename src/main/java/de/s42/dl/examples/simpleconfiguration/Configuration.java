@@ -38,7 +38,7 @@ import java.util.UUID;
  */
 public class Configuration
 {
-
+	protected String name;
 	protected String login;
 	protected UUID uuid;
 	protected int id;
@@ -129,6 +129,16 @@ public class Configuration
 	{
 		this.mapped.clear();
 		this.mapped.putAll(mapped);
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 	// </editor-fold>	
 }

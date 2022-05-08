@@ -40,9 +40,10 @@ Any value defined here will override the pom.xml file value but is only applicab
             <configuration id="Binary Example" profiles=""/>
             <configuration id="DL Only Example" profiles=""/>
             <configuration id="GUI Example" profiles=""/>
+            <configuration id="HTML Example" profiles=""/>
             <configuration id="Load and Store Example" profiles=""/>
             <configuration id="Simple Example" profiles=""/>
-            <configuration id="HTML Example" profiles=""/>
+            <configuration id="JSON Example" profiles=""/>
         </configurations>
     </config-data>
 </project-shared-configuration>

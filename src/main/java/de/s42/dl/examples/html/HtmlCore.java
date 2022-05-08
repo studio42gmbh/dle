@@ -37,7 +37,6 @@ import de.s42.dl.examples.html.tags.Tag;
 import de.s42.dl.examples.html.tags.PTag;
 import de.s42.dl.examples.html.tags.TextTag;
 import de.s42.dl.exceptions.DLException;
-import de.s42.dl.exceptions.InvalidInstance;
 import de.s42.dl.instances.SimpleTypeDLInstance;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -45,7 +44,6 @@ import de.s42.dl.examples.html.tags.ContainedInHtml;
 import de.s42.dl.examples.html.tags.LinkTag;
 import de.s42.dl.examples.html.tags.ScriptTag;
 import de.s42.dl.examples.html.tags.TitleTag;
-import de.s42.dl.exceptions.InvalidType;
 
 /**
  *
@@ -89,7 +87,7 @@ public class HtmlCore extends DefaultCore
 		setAllowDefineTypes(false);
 	}
 
-	public void setVariable(String key, String value) throws InvalidInstance, InvalidType
+	public void setVariable(String key, String value) throws DLException
 	{
 		assert key != null;
 		assert value != null;
