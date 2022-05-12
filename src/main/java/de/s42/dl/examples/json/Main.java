@@ -56,7 +56,7 @@ public class Main
 		core.defineType(Configuration.class, "Configuration");
 
 		// Load config
-		DLModule module = core.parse(CONFIG_PATH.toString());
+		core.parse(CONFIG_PATH.toString());
 
 		// Convert DL to config
 		Configuration config = core.getExported("config").orElseThrow().toJavaObject(core);
@@ -65,9 +65,9 @@ public class Main
 		// Write config to json
 		try (JsonWriter writer = new JsonWriter(JSON_PATH, core)) {
 			writer.write(config);
-			//writer.write(config.getMapped());
 		}
 		
+		// Read the json into a dl and then convert into the java object
 		try (JsonReader reader = new JsonReader(core, JSON_PATH)) {
 			Configuration configJson = reader.readObject();
 			log.debug(StringHelper.toString(configJson));		
