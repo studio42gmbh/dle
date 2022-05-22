@@ -4,12 +4,10 @@ extern type de.s42.dl.types.ObjectDLType;
 extern type de.s42.dl.types.ClassDLType; 
 extern type de.s42.dl.types.SymbolDLType; 
 extern type de.s42.dl.types.StringDLType;
-extern type de.s42.dl.types.IntegerDLType;
-alias int de.s42.dl.types.IntegerDLType;
+extern type de.s42.dl.types.IntegerDLType alias int;
 extern type de.s42.dl.types.UUIDDLType;
 extern type de.s42.dl.types.PathDLType;
-extern type de.s42.dl.types.BooleanDLType;
-alias boolean de.s42.dl.types.BooleanDLType;
+extern type de.s42.dl.types.BooleanDLType alias boolean;
 extern type de.s42.dl.types.ArrayDLType;
 extern type de.s42.dl.types.ListDLType;
 extern type de.s42.dl.types.MapDLType;
@@ -84,11 +82,10 @@ type User @contain(Media, 0, 100) extends Object contains Media
 	Map<String, Object> flexAttributes;
 }
 
-final type Configuration @contain(User, 1, 3) extends Object contains User 
+final type Configuration @contain(User, 1, 3) extends Object contains User alias Config
 {
 	boolean debug : false;
 }
-alias Config Configuration;
 
 
 // disallow definitions and requiring in data section

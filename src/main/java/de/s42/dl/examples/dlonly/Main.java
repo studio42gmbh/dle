@@ -32,10 +32,8 @@ import de.s42.dl.DLCore;
 import de.s42.dl.DLEnum;
 import de.s42.dl.DLInstance;
 import de.s42.dl.DLModule;
-import de.s42.dl.DLPragma;
 import de.s42.dl.DLType;
 import de.s42.dl.core.BaseDLCore;
-import de.s42.dl.exceptions.InvalidPragma;
 import de.s42.dl.pragmas.DefinePragmaPragma;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
@@ -43,12 +41,14 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * This example shows the possibilites of DL only. All types, enums, pragmas and instances are defined in DL (Except the DefinePragmaPragma to allow definition of further pragmas).
+ * This example shows the possibilites of DL only. All types, enums, pragmas and instances are defined in DL (Except the
+ * DefinePragmaPragma to allow definition of further pragmas).
+ *
  * @author Benjamin Schiller
  */
 public class Main
 {
-	
+
 	protected final static String MODULE_PATH = "de/s42/dl/examples/dlonly/module.dl";
 
 	private final static Logger log = LogManager.getLogger(Main.class.getName());
@@ -138,7 +138,7 @@ public class Main
 
 		builder
 			.append("\n");
-		
+
 		for (DLType parents : type.getParents()) {
 
 			builder
@@ -146,7 +146,7 @@ public class Main
 				.append(parents.getCanonicalName())
 				.append("\n");
 		}
-		
+
 		for (DLType contains : type.getContainedTypes()) {
 
 			builder
@@ -154,7 +154,7 @@ public class Main
 				.append(contains.getCanonicalName())
 				.append("\n");
 		}
-		
+
 		for (DLAttribute attribute : type.getAttributes()) {
 
 			builder
