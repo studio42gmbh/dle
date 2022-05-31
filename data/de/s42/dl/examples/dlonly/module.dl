@@ -1,9 +1,9 @@
-// define types
+// Define types
 
 require "de/s42/dl/examples/dlonly/types.dl";
 
 
-// define data
+// Define data
 
 boolean debugMode : false;
 boolean suppressWarnings : false;
