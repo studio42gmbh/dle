@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <name>Data Language Examples</name>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>de.s42</groupId>
-    <artifactId>dlexamples</artifactId>
-    <version>0.1.0</version>
-    <packaging>jar</packaging>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
-    </properties>
+	<name>Data Language Examples</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.s42</groupId>
+	<artifactId>dlexamples</artifactId>
+	<version>0.1.0</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>14</maven.compiler.source>
+		<maven.compiler.target>14</maven.compiler.target>
+	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>de.s42</groupId>
+			<artifactId>base42</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+			<type>jar</type>
+		</dependency>
 		<dependency>
 			<groupId>de.s42</groupId>
 			<artifactId>log42</artifactId>
 			<version>0.1.0</version>
+			<scope>compile</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>de.s42</groupId>
 			<artifactId>dl</artifactId>
 			<version>0.1.0</version>
-		</dependency>		
+			<scope>compile</scope>
+			<type>jar</type>
+		</dependency>
 	</dependencies>	
 	<build>
 		<plugins>
@@ -61,8 +72,6 @@
 					<!-- https://stackoverflow.com/questions/64688896/how-to-make-testng-print-detail-message-about-the-failure -->
 					<trimStackTrace>false</trimStackTrace> 
 					<argLine>--add-modules de.sft.dlexamples -Dfile.encoding=UTF-8</argLine>
-					<parallel>methods</parallel>
-					<threadCount>4</threadCount>
 				</configuration>
 			</plugin>		
 			<plugin>
@@ -118,6 +127,12 @@
 					<destDir>javadoc</destDir>
 					<show>private</show>
 				</configuration>				
+			</plugin>
+			<plugin>
+				<!-- https://maven.apache.org/plugins/maven-install-plugin/ -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>3.0.0-M1</version>
 			</plugin>
 		</plugins>		
 	</build>	
