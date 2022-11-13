@@ -25,7 +25,7 @@
 //</editor-fold>
 package de.s42.dl.examples.loadandstore;
 
-import de.s42.dl.DLAnnotation;
+import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.annotations.RangeDLAnnotation;
 import java.util.Date;
@@ -44,7 +44,7 @@ public class Configuration
 
 	protected Date lastLoad;
 
-	@DLAnnotation.AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0.0", "100.0"})
+	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0.0", "100.0"})
 	protected double depth;
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
