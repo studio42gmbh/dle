@@ -25,18 +25,14 @@
 //</editor-fold>
 package de.s42.dl.examples.html.tags;
 
-import de.s42.dl.DLAnnotation.AnnotationDL;
-import de.s42.dl.annotations.ContainDLAnnotation;
-import de.s42.dl.annotations.ContainOnlyDLAnnotation;
-
 /**
  * The html tag currently requires a body and a head tag to be contained exactly once
  *
  * @author Benjamin Schiller
  */
-@AnnotationDL(value = ContainDLAnnotation.DEFAULT_SYMBOL, parameters = {HeadTag.NAME, "1", "1"})
-@AnnotationDL(value = ContainDLAnnotation.DEFAULT_SYMBOL, parameters = {BodyTag.NAME, "1", "1"})
-@AnnotationDL(value = ContainOnlyDLAnnotation.DEFAULT_SYMBOL, parameters = {ContainedInHtml.NAME, "2", "2"})
+//@AnnotationDL(value = ContainDLAnnotation.DEFAULT_SYMBOL, parameters = {HeadTag.NAME, "1", "1"})
+//@AnnotationDL(value = ContainDLAnnotation.DEFAULT_SYMBOL, parameters = {BodyTag.NAME, "1", "1"})
+//@AnnotationDL(value = ContainOnlyDLAnnotation.DEFAULT_SYMBOL, parameters = {ContainedInHtml.NAME, "2", "2"})
 public class HtmlTag extends ContainerTag
 {
 

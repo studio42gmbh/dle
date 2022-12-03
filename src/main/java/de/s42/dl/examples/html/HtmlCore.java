@@ -82,7 +82,7 @@ public class HtmlCore extends DefaultCore
 		defineType(createType(PTag.class), PTag.NAME);
 
 		// Dont allow changing the language from within DL
-		setAllowDefineAnnotations(false);
+		setAllowDefineAnnotationsFactories(false);
 		setAllowDefinePragmas(false);
 		setAllowDefineTypes(false);
 	}

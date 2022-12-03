@@ -26,14 +26,16 @@
 package de.s42.dl.examples.dlonly;
 
 import de.s42.base.conversion.ConversionHelper;
-import de.s42.dl.DLAnnotated.DLMappedAnnotation;
+import de.s42.dl.DLAnnotation;
 import de.s42.dl.DLAttribute;
-import de.s42.dl.DLCore;
 import de.s42.dl.DLEnum;
 import de.s42.dl.DLInstance;
 import de.s42.dl.DLModule;
 import de.s42.dl.DLType;
 import de.s42.dl.core.BaseDLCore;
+import de.s42.dl.core.resolvers.FileCoreResolver;
+import de.s42.dl.core.resolvers.ResourceCoreResolver;
+import de.s42.dl.core.resolvers.StringCoreResolver;
 import de.s42.dl.pragmas.DefinePragmaPragma;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
@@ -58,11 +60,15 @@ public class Main
 		log.info("Starting DL Only Example");
 
 		// setup base dl core and allow definitions and require
-		DLCore core = new BaseDLCore();
-		core.setAllowDefineAnnotations(true);
+		BaseDLCore core = new BaseDLCore();
+		core.addResolver(new StringCoreResolver(core));
+		core.addResolver(new ResourceCoreResolver(core));
+		core.addResolver(new FileCoreResolver(core));
+		core.setAllowDefineAnnotationsFactories(true);
 		core.setAllowDefinePragmas(true);
 		core.setAllowDefineTypes(true);
 		core.setAllowRequire(true);
+		core.setAllowUsePragmas(true);
 		// this pragma is necessary to bootstrap new pragma definitions in DL
 		core.definePragma(new DefinePragmaPragma());
 
@@ -101,12 +107,12 @@ public class Main
 			.append("Enum ")
 			.append(enumType.getCanonicalName());
 
-		for (DLMappedAnnotation annotation : enumType.getAnnotations()) {
+		for (DLAnnotation annotation : enumType.getAnnotations()) {
 
 			builder
 				.append(" @")
-				.append(annotation.getAnnotation().getName())
-				.append(Arrays.toString(annotation.getParameters()));
+				.append(annotation.getName())
+				.append(Arrays.toString(annotation.getFlatParameters()));
 		}
 
 		builder
@@ -128,12 +134,12 @@ public class Main
 			.append(" complex:").append(type.isComplexType())
 			.append(" dynamic:").append(type.isAllowDynamicAttributes());
 
-		for (DLMappedAnnotation annotation : type.getAnnotations()) {
+		for (DLAnnotation annotation : type.getAnnotations()) {
 
 			builder
 				.append(" @")
-				.append(annotation.getAnnotation().getName())
-				.append(Arrays.toString(annotation.getParameters()));
+				.append(annotation.getName())
+				.append(Arrays.toString(annotation.getFlatParameters()));
 		}
 
 		builder
@@ -165,12 +171,12 @@ public class Main
 				.append(" ")
 				.append((Object) attribute.getDefaultValue());
 
-			for (DLMappedAnnotation annotation : attribute.getAnnotations()) {
+			for (DLAnnotation annotation : attribute.getAnnotations()) {
 
 				builder
 					.append(" @")
-					.append(annotation.getAnnotation().getName())
-					.append(Arrays.toString(annotation.getParameters()));
+					.append(annotation.getName())
+					.append(Arrays.toString(annotation.getFlatParameters()));
 			}
 
 			builder
@@ -191,12 +197,12 @@ public class Main
 				.append(" ")
 				.append(child.getName());
 
-			for (DLMappedAnnotation annotation : child.getAnnotations()) {
+			for (DLAnnotation annotation : child.getAnnotations()) {
 
 				builder
 					.append(" @")
-					.append(annotation.getAnnotation().getName())
-					.append(Arrays.toString(annotation.getParameters()));
+					.append(annotation.getName())
+					.append(Arrays.toString(annotation.getFlatParameters()));
 			}
 
 			builder
