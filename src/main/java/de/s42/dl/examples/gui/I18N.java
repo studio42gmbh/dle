@@ -69,7 +69,7 @@ public class I18N extends DefaultDLInstance
 	}
 
 	@Override
-	public I18N toJavaObject(DLCore core)
+	public I18N toJavaObject()
 	{
 		return this;
 	}

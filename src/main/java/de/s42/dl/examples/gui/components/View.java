@@ -61,7 +61,7 @@ public class View extends Component
 
 			// Load components from main view
 			final List<Component> components;
-			components = core.parse(file.toString()).getChildrenAsJavaType(Component.class, core);
+			components = core.parse(file.toString()).getChildrenAsJavaType(Component.class);
 
 			// Iterate components and add them to content pane
 			for (Component component : components) {

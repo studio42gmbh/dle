@@ -154,7 +154,7 @@ public class Main
 			try (HrfDLReader reader = new HrfDLReader(LOCAL_CONFIG_FILE_HRF, core)) {
 
 				while (reader.ready()) {
-					User user = reader.readObject();
+					User user = (User)reader.readObject();
 					sum += user.getScore();
 				}
 			}

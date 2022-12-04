@@ -61,7 +61,7 @@ public class Main
 		// if config file exists load config from file
 		if (FilesHelper.fileExists(CONFIG_PATH)) {
 
-			config = core.parse(CONFIG_PATH.toString()).getChildAsJavaObject(0, core);
+			config = (Configuration)core.parse(CONFIG_PATH.toString()).getChildAsJavaObject(0);
 		} // create a new config
 		else {
 			config = new Configuration();

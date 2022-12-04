@@ -103,7 +103,7 @@ public class HtmlCore extends DefaultCore
 		addExported(variable);
 	}
 
-	public <TagType extends Tag> TagType parseHtml(Path htmlFile) throws DLException
+	public Tag parseHtml(Path htmlFile) throws DLException
 	{
 		assert htmlFile != null;
 
@@ -111,6 +111,6 @@ public class HtmlCore extends DefaultCore
 		DLModule module = parse(htmlFile.toAbsolutePath().toString());
 
 		// Expect the file to contain at least 1 child -> return it
-		return (TagType) module.getChild(0).toJavaObject(this);
+		return (Tag) module.getChild(0).toJavaObject();
 	}
 }

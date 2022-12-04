@@ -27,7 +27,6 @@ package de.s42.dl.examples.json;
 
 import de.s42.base.strings.StringHelper;
 import de.s42.dl.examples.simpleconfiguration.*;
-import de.s42.dl.DLModule;
 import de.s42.dl.core.DefaultCore;
 import de.s42.dl.io.json.JsonReader;
 import de.s42.dl.io.json.JsonWriter;
@@ -59,18 +58,18 @@ public class Main
 		core.parse(CONFIG_PATH.toString());
 
 		// Convert DL to config
-		Configuration config = core.getExported("config").orElseThrow().toJavaObject(core);
-		log.debug(StringHelper.toString(config));		
+		Configuration config = (Configuration) core.getExported("config").orElseThrow().toJavaObject();
+		log.debug(StringHelper.toString(config));
 
 		// Write config to json
-		try (JsonWriter writer = new JsonWriter(JSON_PATH, core)) {
+		try ( JsonWriter writer = new JsonWriter(JSON_PATH, core)) {
 			writer.write(config);
 		}
-		
+
 		// Read the json into a dl and then convert into the java object
-		try (JsonReader reader = new JsonReader(core, JSON_PATH)) {
-			Configuration configJson = reader.readObject();
-			log.debug(StringHelper.toString(configJson));		
-		}				
+		try ( JsonReader reader = new JsonReader(core, JSON_PATH)) {
+			Configuration configJson = (Configuration) reader.readObject();
+			log.debug(StringHelper.toString(configJson));
+		}
 	}
 }
