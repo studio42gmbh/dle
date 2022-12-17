@@ -25,7 +25,7 @@
 //</editor-fold>
 package de.s42.dl.examples.html.tags;
 
-import de.s42.dl.java.DLContainer;
+import de.s42.dl.types.DLContainer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

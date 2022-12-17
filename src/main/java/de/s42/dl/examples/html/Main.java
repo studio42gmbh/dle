@@ -58,7 +58,7 @@ public class Main
 		core.setVariable("title", "Page Title from Java");
 
 		// Read DL file into domain data model
-		HtmlTag html = (HtmlTag)core.parseHtml(HTML_DL_FILE);
+		HtmlTag html = (HtmlTag) core.parseHtml(HTML_DL_FILE);
 
 		// Find body tag and then append a p tag to it or error if not found
 		html.getChild(BodyTag.class).ifPresentOrElse(
