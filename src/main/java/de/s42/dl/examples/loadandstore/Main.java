@@ -27,8 +27,8 @@ package de.s42.dl.examples.loadandstore;
 
 import de.s42.base.files.FilesHelper;
 import de.s42.dl.core.DefaultCore;
+import de.s42.dl.language.DLFileType;
 import de.s42.dl.util.DLHelper;
-import de.s42.dl.util.DLHelper.DLFileType;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
 import java.nio.file.Path;
@@ -49,7 +49,7 @@ public class Main
 	public static void main(String[] args) throws Exception
 	{
 		log.info("Starting Load and Store Example");
-		
+
 		// init core and 2 custom types Uer and Configuration
 		DefaultCore core = new DefaultCore();
 		core.defineType(core.createType(User.class));
@@ -61,7 +61,7 @@ public class Main
 		// if config file exists load config from file
 		if (FilesHelper.fileExists(CONFIG_PATH)) {
 
-			config = (Configuration)core.parse(CONFIG_PATH.toString()).getChildAsJavaObject(0);
+			config = (Configuration) core.parse(CONFIG_PATH.toString()).getChildAsJavaObject(0);
 		} // create a new config
 		else {
 			config = new Configuration();

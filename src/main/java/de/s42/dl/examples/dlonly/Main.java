@@ -33,9 +33,7 @@ import de.s42.dl.DLInstance;
 import de.s42.dl.DLModule;
 import de.s42.dl.DLType;
 import de.s42.dl.core.BaseDLCore;
-import de.s42.dl.core.resolvers.FileCoreResolver;
-import de.s42.dl.core.resolvers.ResourceCoreResolver;
-import de.s42.dl.core.resolvers.StringCoreResolver;
+import de.s42.dl.core.DefaultCore;
 import de.s42.dl.pragmas.DefinePragmaPragma;
 import de.s42.log.LogManager;
 import de.s42.log.Logger;
@@ -60,15 +58,8 @@ public class Main
 		log.info("Starting DL Only Example");
 
 		// setup base dl core and allow definitions and require
-		BaseDLCore core = new BaseDLCore();
-		core.addResolver(new StringCoreResolver(core));
-		core.addResolver(new ResourceCoreResolver(core));
-		core.addResolver(new FileCoreResolver(core));
-		core.setAllowDefineAnnotationsFactories(true);
-		core.setAllowDefinePragmas(true);
-		core.setAllowDefineTypes(true);
-		core.setAllowRequire(true);
-		core.setAllowUsePragmas(true);
+		BaseDLCore core = new BaseDLCore(true);
+		DefaultCore.loadResolvers(core);
 		// this pragma is necessary to bootstrap new pragma definitions in DL
 		core.definePragma(new DefinePragmaPragma());
 
