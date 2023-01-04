@@ -25,9 +25,8 @@
 //</editor-fold>
 package de.s42.dl.examples.gui;
 
-import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
-import de.s42.dl.annotations.RangeDLAnnotation;
+import de.s42.dl.annotations.RangeDLAnnotation.range;
 
 /**
  *
@@ -40,7 +39,7 @@ public class Font
 	protected String face;
 
 	@AttributeDL(required = true)
-	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"1", "1000"})
+	@range(min = 1, max = 1000)
 	protected int size;
 
 	@AttributeDL

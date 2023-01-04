@@ -28,7 +28,7 @@ package de.s42.dl.examples.binary;
 import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.annotations.LengthDLAnnotation;
-import de.s42.dl.annotations.RangeDLAnnotation;
+import de.s42.dl.annotations.RangeDLAnnotation.range;
 import java.util.UUID;
 
 /**
@@ -49,16 +49,16 @@ public class User
 
 	protected boolean active;
 
-	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0", "150"})
+	@range(min = 0, max = 150)
 	protected int age;
 
-	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0.0", "100.0"})
+	@range(min = 0.0, max = 100.0)
 	protected double score;
 
-	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0", "1000000000000"})
+	@range(min = 0, max = 1000000000000L)
 	protected long seed;
 
-	@AnnotationDL(value = RangeDLAnnotation.DEFAULT_SYMBOL, parameters = {"0.0", "10000.0"})
+	@range(min = 0.0, max = 10000.0)
 	protected float sector;
 
 	// <editor-fold desc="Getters/Setters" defaultstate="collapsed">
