@@ -28,7 +28,7 @@ package de.s42.dl.examples.binary;
 import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.annotations.LengthDLAnnotation;
-import de.s42.dl.annotations.RangeDLAnnotation.range;
+import de.s42.dl.annotations.numbers.RangeDLAnnotation.range;
 import java.util.UUID;
 
 /**
