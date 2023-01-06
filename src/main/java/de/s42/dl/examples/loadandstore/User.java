@@ -27,7 +27,7 @@ package de.s42.dl.examples.loadandstore;
 
 import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
-import de.s42.dl.annotations.LengthDLAnnotation;
+import de.s42.dl.annotations.strings.LengthDLAnnotation;
 import java.util.UUID;
 
 /**

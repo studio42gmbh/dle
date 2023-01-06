@@ -26,7 +26,7 @@
 package de.s42.dl.examples.html.tags;
 
 import de.s42.dl.DLAnnotation.AnnotationDL;
-import de.s42.dl.annotations.ContainOnlyDLAnnotation;
+import de.s42.dl.annotations.types.ContainOnlyDLAnnotation;
 
 /**
  *
