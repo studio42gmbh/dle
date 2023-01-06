@@ -123,7 +123,7 @@ public class Main
 			.append(" abstract:").append(type.isAbstract())
 			.append(" final:").append(type.isFinal())
 			.append(" complex:").append(type.isComplexType())
-			.append(" dynamic:").append(type.isAllowDynamicAttributes());
+			.append(" dynamic:").append(type.isDynamic());
 
 		for (DLAnnotation annotation : type.getAnnotations()) {
 

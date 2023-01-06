@@ -99,7 +99,7 @@ public class GuiCore extends DefaultCore
 
 		// I18n and L10n
 		DefaultDLType i18nType = new DefaultDLType(I18N.class.getName());
-		i18nType.setAllowDynamicAttributes(true);
+		i18nType.setDynamic(true);
 		defineType(i18nType);
 		I18N i18n = new I18N(i18nType);
 		i18n.init(L10N_PATH);
