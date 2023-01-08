@@ -25,10 +25,9 @@
 //</editor-fold>
 package de.s42.dl.examples.binary;
 
-import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
 import de.s42.dl.annotations.numbers.RangeDLAnnotation.range;
-import de.s42.dl.annotations.strings.LengthDLAnnotation;
+import de.s42.dl.annotations.strings.LengthDLAnnotation.length;
 import java.util.UUID;
 
 /**
@@ -40,8 +39,8 @@ public class User
 
 	protected String name;
 
-	@AnnotationDL(value = LengthDLAnnotation.DEFAULT_SYMBOL, parameters = {"4", "100"})
 	@AttributeDL(required = true)
+	@length(min = 4, max = 100)
 	protected String login;
 
 	@AttributeDL(required = true)

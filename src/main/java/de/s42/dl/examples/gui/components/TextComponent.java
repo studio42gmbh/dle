@@ -25,9 +25,8 @@
 //</editor-fold>
 package de.s42.dl.examples.gui.components;
 
-import de.s42.dl.DLAnnotation.AnnotationDL;
 import de.s42.dl.DLAttribute.AttributeDL;
-import de.s42.dl.annotations.strings.LengthDLAnnotation;
+import de.s42.dl.annotations.strings.LengthDLAnnotation.length;
 import de.s42.dl.examples.gui.Font;
 
 /**
@@ -38,7 +37,7 @@ public abstract class TextComponent extends Component
 {
 
 	@AttributeDL(required = true)
-	@AnnotationDL(value = LengthDLAnnotation.DEFAULT_SYMBOL, parameters = {"0", "10000"})
+	@length(min = 0, max = 10000)
 	protected String text;
 
 	@AttributeDL
